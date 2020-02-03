@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'empresas',
     loadChildren: () => import('./Screens/empresas/empresas.module').then( m => m.EmpresasPageModule)
   },
+  {
+    path: 'add-empresa',
+    loadChildren: () => import('./Screens/add-empresa/add-empresa.module').then( m => m.AddEmpresaPageModule)
+  },
 
 ];
 

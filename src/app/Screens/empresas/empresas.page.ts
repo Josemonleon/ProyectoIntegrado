@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IEmpresa} from 'src/app/interfaces';
 import {EmpresasService} from '../../Services/empresas.services';
 
+
 @Component({
   selector: 'app-empresas',
   templateUrl: './empresas.page.html',
