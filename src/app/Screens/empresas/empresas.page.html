@@ -1,9 +1,73 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>empresas</ion-title>
+    <ion-title> Projecte Integrat </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="/home/empresas">
+        <ion-icon slot="icon-only" name="refresh"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <div align="center">
+    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px;text-decoration: underline;">LISTADO EMPRESAS</p>
+  </div>
+
+  <ion-row>
+    <ion-col size="7">
+      <ion-item>
+        <ion-input clearInput placeholder="Nombre empresa"></ion-input>
+        <ion-icon name="search" slot="end"></ion-icon>
+      </ion-item>
+    </ion-col>
+
+    <ion-col size="5">
+      <ion-item>
+        <ion-label>Rating</ion-label>
+        <ion-select>
+          <ion-select-option value="1">1*</ion-select-option>
+          <ion-select-option value="2">2*</ion-select-option>
+          <ion-select-option value="3">3*</ion-select-option>
+          <ion-select-option value="4">4*</ion-select-option>
+          <ion-select-option value="5">5*</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <ion-list>
+    <ion-item>
+      <ion-label>Microsoft</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Apple</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Amazon</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Facebook</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Everis</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Ahora Soluciones</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Nunsys</ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>Audi</ion-label>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
+
+<ion-footer style="margin-top: 10px;">
+  <ion-toolbar>
+    <ion-button expand="block">AÑADIR EMPRESA</ion-button>
+  </ion-toolbar>
+</ion-footer>
