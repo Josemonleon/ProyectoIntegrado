@@ -14,7 +14,21 @@ import { HomePage } from './home.page';
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        redirectTo: 'alumnos'
+      },
+      {
+        path: '',
+        component: HomePage,
+        children: [
+          {
+            path: "alumnos",
+            loadChildren: '../Screens/alumnos/alumnos.module#AlumnosPageModule'
+          },
+          {
+            path: "empresas",
+            loadChildren: '../Screens/empresas/empresas.module#EmpresasPageModule'
+          },
+        ]
       }
     ])
   ],
