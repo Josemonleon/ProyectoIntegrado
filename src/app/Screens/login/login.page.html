@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Link'em ship</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+  <ion-card *ngIf="registrar == false">
+    <ion-card-title>Acceso de usuarios</ion-card-title>
+    <ion-input placeholder="Nombre de usuario"></ion-input>
+    <ion-input placeholder="Contraseña"></ion-input>
+
+    <ion-button 
+      (click)="funcionPendientePorDesarrollarParaCombprobarSiExiste()"
+    >
+      Acceder
+    </ion-button>
+  </ion-card>
+
+
+  <ion-card *ngIf="registrar == true">
+    <ion-card-title>Alta usuario nuevo</ion-card-title>
+    <ion-input placeholder="Nombre de usuario"></ion-input>
+    <ion-input placeholder="Contraseña"></ion-input>
+
+    <ion-button 
+      (click)="funcionPendientePorDesarrollarParaCombprobarSiExisteYSiNoDarDeAlta()"
+    >
+      Acceder
+    </ion-button>
+  </ion-card>
+
+
+
+</ion-content>
