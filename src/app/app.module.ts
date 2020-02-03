@@ -12,7 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
-
+import {AlumnosService} from './Services/alumnos.service';
 import {environment} from '../environments/environment';
 
 @NgModule({
@@ -25,6 +25,7 @@ import {environment} from '../environments/environment';
   providers: [
     StatusBar,
     SplashScreen,
+    AlumnosService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

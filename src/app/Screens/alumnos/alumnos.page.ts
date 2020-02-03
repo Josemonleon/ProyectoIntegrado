@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { IAlumno } from 'src/app/interfaces';
+import { AlumnosService } from '../../Services/alumnos.service';
 
 @Component({
   selector: 'app-alumnos',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AlumnosPage implements OnInit {
 
-  constructor() { }
+  constructor(private _service: AlumnosService) { }
 
   ngOnInit() {
+
+    let ref = this._service.getAlumnos();
+    ref.once("value", snapshot => {
+      snapshot.forEach(child => {
+        let value = child.val();
+        this.alumnos.push(value);
+      })
+    })
   }
+
+  alumnos: IAlumno[] = [];
 
 }
