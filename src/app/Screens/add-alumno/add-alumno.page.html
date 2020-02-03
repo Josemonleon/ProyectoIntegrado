@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div align="center">
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">NUEVO ALUMNO</p>
+  </div>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Nombre:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Apellidos:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="apellidos"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Email:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="correo"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Localidad:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="localidad"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Tutor:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="tutor"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Curso:</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="curso"></ion-input>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer style="margin-top: 10px;">
+  <ion-toolbar>
+    <ion-button (click)="addAlumno()" expand="full">AÑADIR ALUMNO<ion-icon slot="end" name="person-add"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>

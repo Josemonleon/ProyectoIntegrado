@@ -11,6 +11,10 @@ const routes: Routes = [
     path: 'empresas',
     loadChildren: () => import('./Screens/empresas/empresas.module').then( m => m.EmpresasPageModule)
   },
+  {
+    path: 'add-alumno',
+    loadChildren: () => import('./Screens/add-alumno/add-alumno.module').then( m => m.AddAlumnoPageModule)
+  },
 
 ];
 
