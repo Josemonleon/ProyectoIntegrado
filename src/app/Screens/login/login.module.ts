@@ -17,11 +17,4 @@ import { LoginPage } from './login.page';
   ],
   declarations: [LoginPage]
 })
-export class LoginPageModule {
-
-  registrar : boolean = false;
-
-
-
-
-}
+export class LoginPageModule {}

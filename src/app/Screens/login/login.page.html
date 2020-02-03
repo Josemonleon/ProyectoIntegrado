@@ -5,33 +5,28 @@
 </ion-header>
 
 <ion-content>
+     
 
 
+  <div *ngIf="register == false">
+    <ion-card>
+      <ion-card-title>Acceso de usuarios</ion-card-title>
+      <ion-input placeholder="Nombre de usuario"></ion-input>
+      <ion-input placeholder="Contraseña"></ion-input>
+      <ion-button>Entrar</ion-button>
+      <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+    </ion-card>
+  </div>
 
-  <ion-card *ngIf="registrar == false">
-    <ion-card-title>Acceso de usuarios</ion-card-title>
-    <ion-input placeholder="Nombre de usuario"></ion-input>
-    <ion-input placeholder="Contraseña"></ion-input>
-
-    <ion-button 
-      (click)="funcionPendientePorDesarrollarParaCombprobarSiExiste()"
-    >
-      Acceder
-    </ion-button>
-  </ion-card>
-
-
-  <ion-card *ngIf="registrar == true">
-    <ion-card-title>Alta usuario nuevo</ion-card-title>
-    <ion-input placeholder="Nombre de usuario"></ion-input>
-    <ion-input placeholder="Contraseña"></ion-input>
-
-    <ion-button 
-      (click)="funcionPendientePorDesarrollarParaCombprobarSiExisteYSiNoDarDeAlta()"
-    >
-      Acceder
-    </ion-button>
-  </ion-card>
+  <div *ngIf= "register == true">
+    <ion-card>
+      <ion-card-title>Alta usuario nuevo</ion-card-title>
+      <ion-input placeholder="Nombre de usuario"></ion-input>
+      <ion-input placeholder="Contraseña"></ion-input>
+      <ion-button>Registrar usuario nuevo </ion-button>
+      <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+    </ion-card>
+  </div>
 
 
 
