@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAlumno } from 'src/app/interfaces';
+import { IAlumno, IAlumnoKey } from 'src/app/interfaces';
 import { AlumnosService } from '../../Services/alumnos.service';
 
 @Component({
@@ -17,11 +17,12 @@ export class AlumnosPage implements OnInit {
     ref.once("value", snapshot => {
       snapshot.forEach(child => {
         let value = child.val();
+        value.key=child.key;
         this.alumnos.push(value);
       })
     })
   }
 
-  alumnos: IAlumno[] = [];
+  alumnos: IAlumnoKey[] = [];
 
 }

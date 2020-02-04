@@ -15,3 +15,7 @@ export interface IAlumno {
     "Tutor": string,
     "Empresa": string
 }
+
+export interface IAlumnoKey extends IAlumno{
+    "key": string
+}
