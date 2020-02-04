@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="/home/empresas">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngFor="let item of empresas">
+
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Nombre</ion-card-subtitle>
+      <ion-card-title>{{item.Nombre}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Localidad</ion-card-subtitle>
+      <ion-card-title>{{item.Localidad}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Contacto</ion-card-subtitle>
+      <ion-card-title>{{item.Contacto}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  
+
+</ion-content>
+
+<ion-footer style="margin-top: 10px;">
+  <ion-toolbar>
+    <ion-button expand="block" (click)="insertarEmpresa()">AÑADIR EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>
