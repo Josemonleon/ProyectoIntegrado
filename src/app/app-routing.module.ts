@@ -32,6 +32,11 @@ const routes: Routes = [
     path: 'info-empresa/:key',
     loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
   },
+  {
+    path: 'edit-empresa/:key',
+    loadChildren: () => import('./Screens/edit-empresa/edit-empresa.module').then( m => m.EditEmpresaPageModule)
+  },
+
 
 ];
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ActivatedRoute } from '@angular/router';
 import { IEmpresaKey} from 'src/app/interfaces';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class InfoEmpresaPage implements OnInit {
 
   key: string;
 
-  constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute, private route: Router) { }
 
   ngOnInit() {
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -25,6 +26,10 @@ export class InfoEmpresaPage implements OnInit {
       });
     }
     );
+  }
+
+  editarEmpresa(){
+    this.route.navigate(['../edit-empresa/' + this.key]);
   }
 
 

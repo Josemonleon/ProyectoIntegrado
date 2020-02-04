@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core'
 import { AngularFireDatabase } from '@angular/fire/database'
-import { IEmpresa } from '../interfaces';
+import { IEmpresa, IEmpresaKey } from '../interfaces';
 
 
 @Injectable()
@@ -23,6 +23,7 @@ export class EmpresasService {
         let ref = this._db.database.ref("Empresas");  //Hacemos referencia al nodo que queremos acceder de la bbdd.
         ref.push(empresa); //Añadimos en la bbdd, en el nodo arriba seleccionado, la empresa pasada por parámetro en la función
     }
+
 
 
     
