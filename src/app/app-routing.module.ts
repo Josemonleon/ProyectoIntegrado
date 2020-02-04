@@ -32,6 +32,15 @@ const routes: Routes = [
     path: 'info-empresa/:key',
     loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
   },
+  {
+    path: 'edit-alumno',
+    loadChildren: () => import('./Screens/edit-alumno/edit-alumno.module').then( m => m.EditAlumnoPageModule)
+  },
+  {
+    path: 'edit-alumno/:key',
+    loadChildren: () => import('./Screens/edit-alumno/edit-alumno.module').then( m => m.EditAlumnoPageModule)
+  },
+
 
 ];
 
