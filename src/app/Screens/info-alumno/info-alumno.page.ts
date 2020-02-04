@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IAlumno } from 'src/app/interfaces';
+import { AlumnosService } from 'src/app/Services/alumnos.service';
 
 @Component({
   selector: 'app-info-alumno',
@@ -8,12 +10,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InfoAlumnoPage implements OnInit {
 
-  constructor(private _activatedRoute: ActivatedRoute) { }
+  constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.key = this._activatedRoute.snapshot.paramMap.get('key');
+
+    let ref = this._service.getAlumnos().orderByKey().equalTo(this.key);
+    
+    await ref.once("value", snapshot => {
+      snapshot.forEach(child => {
+        this.item = child.val();
+      })
+    })
+    
   }
 
   key: string;
-
+  item: object = {};
 }

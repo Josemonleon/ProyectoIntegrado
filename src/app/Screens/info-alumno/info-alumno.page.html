@@ -1,9 +1,59 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>infoAlumno</ion-title>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+  <div align="center">
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN ALUMNO</p>
+  </div>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Nombre</ion-card-subtitle>
+      <ion-card-title>{{item.Nombre}} {{item.Apellidos}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Email</ion-card-subtitle>
+      <ion-card-title>{{item.Email}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Localidad</ion-card-subtitle>
+      <ion-card-title>{{item.Localidad}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Tutor & Curso</ion-card-subtitle>
+      <ion-card-title>{{item.Tutor}} {{item.Curso}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Empresa</ion-card-subtitle>
+      <ion-card-title>{{item.Empresa}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
 </ion-content>
+
+<ion-footer class="texto" style="margin-top: 10px;">
+  <ion-toolbar>
+    <ion-button  expand="full">EDITAR INFORMACIÓN ALUMNO<ion-icon slot="end" name="person-add"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>
