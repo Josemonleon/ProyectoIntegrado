@@ -55,7 +55,7 @@ export class AddAlumnoPage implements OnInit {
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Producto añadido correctamente',
+      message: 'Alumno añadido correctamente',
       duration: 4000,
       position: "bottom"
     });

@@ -3,6 +3,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
     path: 'alumnos',
@@ -31,12 +32,25 @@ const routes: Routes = [
   {
     path: 'info-empresa/:key',
     loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
+
   },
   {
+    path: 'edit-alumno',
+    loadChildren: () => import('./Screens/edit-alumno/edit-alumno.module').then( m => m.EditAlumnoPageModule)
+  },
+  {
+
     path: 'edit-empresa/:key',
     loadChildren: () => import('./Screens/edit-empresa/edit-empresa.module').then( m => m.EditEmpresaPageModule)
   },
-
+  {
+    path: 'edit-alumno/:key',
+    loadChildren: () => import('./Screens/edit-alumno/edit-alumno.module').then( m => m.EditAlumnoPageModule)
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./Screens/login/login.module').then( m => m.LoginPageModule)
+  }
 
 ];
 
