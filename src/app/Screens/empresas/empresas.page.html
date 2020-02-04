@@ -39,14 +39,16 @@
 
   <ion-list>
     <ion-item *ngFor="let item of empresas">
-      <ion-label>{{item.Nombre}}</ion-label>
+      <ion-label (click)="verInfo(item.key)">{{item.Nombre}}</ion-label>
     </ion-item>
   </ion-list>
+
+  
 
 </ion-content>
 
 <ion-footer style="margin-top: 10px;">
   <ion-toolbar>
-    <ion-button expand="block">AÑADIR EMPRESA</ion-button>
+    <ion-button expand="block" routerLink='/add-empresa'>AÑADIR EMPRESA</ion-button>
   </ion-toolbar>
 </ion-footer>

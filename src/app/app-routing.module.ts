@@ -23,9 +23,14 @@ const routes: Routes = [
   {
     path: 'info-alumno/:key',
     loadChildren: () => import('./Screens/info-alumno/info-alumno.module').then( m => m.InfoAlumnoPageModule)
-  }
+  },
+  {
+    path: 'add-empresa',
+    loadChildren: () => import('./Screens/add-empresa/add-empresa.module').then( m => m.AddEmpresaPageModule)
+  },
 
 ];
+
 
 @NgModule({
   imports: [

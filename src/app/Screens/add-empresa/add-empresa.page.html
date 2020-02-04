@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button href="/home/empresas">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div align="center">
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px;text-decoration: underline;">NUEVA EMPRESA</p>
+  </div>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Nombre</ion-label>
+    <ion-input class="subtexto"[(ngModel)]="nombre"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Localidad</ion-label>
+    <ion-input class="subtexto" [(ngModel)]="localidad"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label class="texto" position="stacked">Contacto</ion-label>
+    <ion-input class="subtexto" [(ngModel)]="contacto"></ion-input>
+  </ion-item>
+
+</ion-content>
+
+<ion-footer style="margin-top: 10px;">
+  <ion-toolbar>
+    <ion-button expand="block" (click)="insertarEmpresa()">AÑADIR EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
+  </ion-toolbar>
+</ion-footer>
