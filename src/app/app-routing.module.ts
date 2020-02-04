@@ -28,9 +28,12 @@ const routes: Routes = [
     path: 'add-empresa',
     loadChildren: () => import('./Screens/add-empresa/add-empresa.module').then( m => m.AddEmpresaPageModule)
   },
+  {
+    path: 'info-empresa/:key',
+    loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
+  },
 
 ];
-
 
 @NgModule({
   imports: [

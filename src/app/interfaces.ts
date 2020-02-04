@@ -19,3 +19,7 @@ export interface IAlumno {
 export interface IAlumnoKey extends IAlumno{
     "key": string
 }
+
+export interface IEmpresaKey extends IEmpresa{
+    "key": string
+}
