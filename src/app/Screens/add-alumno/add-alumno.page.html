@@ -45,9 +45,17 @@
     <ion-input class="subtexto" clearInput [(ngModel)]="curso"></ion-input>
   </ion-item>
 
+  <ion-item>
+    <ion-label>Empresa asignada</ion-label>
+    <ion-select [(ngModel)]="empresa">
+      <ion-select-option value="Ninguna">Ninguna</ion-select-option>
+      <ion-select-option *ngFor="let item of empresas" value="{{item.Nombre}}">{{item.Nombre}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+
 </ion-content>
 
-<ion-footer style="margin-top: 10px;">
+<ion-footer class="texto" style="margin-top: 10px;">
   <ion-toolbar>
     <ion-button (click)="addAlumno()" expand="full">AÑADIR ALUMNO<ion-icon slot="end" name="person-add"></ion-icon></ion-button>
   </ion-toolbar>

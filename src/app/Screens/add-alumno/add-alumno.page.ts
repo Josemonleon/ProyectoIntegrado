@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IAlumno } from 'src/app/interfaces';
+import { IAlumno, IEmpresa } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
+import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -10,10 +11,19 @@ import { ToastController } from '@ionic/angular';
 })
 export class AddAlumnoPage implements OnInit {
 
-  constructor(private _service: AlumnosService, public toastController: ToastController) { }
+  constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService) { }
 
   ngOnInit() {
+    let ref = this._empService.getListaEmpresas();
+    ref.once("value", snapshot =>{
+      snapshot.forEach(child => {
+        let value = child.val();
+        this.empresas.push(value);
+      })
+    })
   }
+
+  empresas: IEmpresa[] = [];
 
   nombre: string = "";
   apellidos: string = "";
@@ -21,6 +31,7 @@ export class AddAlumnoPage implements OnInit {
   localidad: string = "";
   tutor: string = "";
   correo: string = "";
+  empresa: string = "Ninguna";
 
   addAlumno(){
     let alumno: IAlumno;
@@ -30,7 +41,8 @@ export class AddAlumnoPage implements OnInit {
       "Email": this.correo,
       "Localidad": this.localidad,
       "Nombre": this.nombre,
-      "Tutor": this.tutor
+      "Tutor": this.tutor,
+      "Empresa": this.empresa
     }
 
     if(this.esCorrecto()){
@@ -55,7 +67,7 @@ export class AddAlumnoPage implements OnInit {
     let correoOK, nombreOK, apellidosOK, tutorOK, localidadOK, cursoOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var regex2 = /^[a-zA-Z ]{2,}$/;
+    var regex2 = /^[a-zA-ZÀ-ÿ ]{2,}$/;
 
     if (regex.test(this.correo)) {
       correoOK = true;

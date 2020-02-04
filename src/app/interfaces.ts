@@ -12,5 +12,6 @@ export interface IAlumno {
     "Curso": string,
     "Email": string,
     "Localidad": string,
-    "Tutor": string
+    "Tutor": string,
+    "Empresa": string
 }
