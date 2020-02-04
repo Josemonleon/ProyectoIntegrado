@@ -40,6 +40,7 @@ const routes: Routes = [
   },
   {
 
+
     path: 'edit-empresa/:key',
     loadChildren: () => import('./Screens/edit-empresa/edit-empresa.module').then( m => m.EditEmpresaPageModule)
   },
@@ -50,6 +51,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./Screens/login/login.module').then( m => m.LoginPageModule)
+  },
+
+  {
+    path: 'edit-empresa/:key',
+    loadChildren: () => import('./Screens/edit-empresa/edit-empresa.module').then( m => m.EditEmpresaPageModule)
   }
 
 ];
