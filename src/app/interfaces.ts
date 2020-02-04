@@ -14,3 +14,7 @@ export interface IAlumno {
     "Localidad": string,
     "Tutor": string
 }
+
+export interface IEmpresaKey extends IEmpresa{
+    "key": string
+}

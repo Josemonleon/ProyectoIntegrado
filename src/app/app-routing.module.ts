@@ -3,7 +3,8 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},  {
+  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  {
     path: 'alumnos',
     loadChildren: () => import('./Screens/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
   },
@@ -14,6 +15,10 @@ const routes: Routes = [
   {
     path: 'add-empresa',
     loadChildren: () => import('./Screens/add-empresa/add-empresa.module').then( m => m.AddEmpresaPageModule)
+  },
+  {
+    path: 'info-empresa/:key',
+    loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
   },
 
 ];
