@@ -43,13 +43,12 @@ export class AddEmpresaPage implements OnInit {
       "Nombre": this.nombre,
       "Localidad": this.localidad,
       "Contacto": this.contacto,
+      "Valoracion" : 0
     };
 
     if(this.esCorrecto()){
       //Llamamos a la función que añade empresa en la bbdd de FireBase. Le pasamos el empresa por parametro.
       this._service.setEmpresa(empresa);
-
-
       this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
     }else alert("Datos incorrectos");
     

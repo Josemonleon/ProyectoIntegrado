@@ -3,7 +3,8 @@
 export interface IEmpresa{
     "Nombre": string,
     "Contacto": string,
-    "Localidad": string
+    "Localidad": string,
+    "Valoracion": number
 }
 
 export interface IAlumno {
@@ -22,4 +23,11 @@ export interface IAlumnoKey extends IAlumno{
 
 export interface IEmpresaKey extends IEmpresa{
     "key": string
+}
+
+export interface IValoracion{
+    "Comentario": string,
+    "Empresa": string, //key de la empresa
+    "Usuario": string, //key del alumno
+    "Valoracion": number
 }
