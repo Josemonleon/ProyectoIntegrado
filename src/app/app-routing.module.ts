@@ -53,8 +53,15 @@ const routes: Routes = [
   {
     path: 'edit-empresa/:key',
     loadChildren: () => import('./Screens/edit-empresa/edit-empresa.module').then( m => m.EditEmpresaPageModule)
+  },
+  {
+    path: 'ver-valoraciones',
+    loadChildren: () => import('./Screens/ver-valoraciones/ver-valoraciones.module').then( m => m.VerValoracionesPageModule)
+  },
+  {
+    path: 'ver-valoraciones/:empresa',
+    loadChildren: () => import('./Screens/ver-valoraciones/ver-valoraciones.module').then( m => m.VerValoracionesPageModule)
   }
-
 ];
 
 @NgModule({

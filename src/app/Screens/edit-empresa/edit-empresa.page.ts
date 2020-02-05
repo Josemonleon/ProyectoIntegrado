@@ -16,7 +16,8 @@ export class EditEmpresaPage implements OnInit {
   empresa: IEmpresa = {
     "Nombre": "",
     "Localidad": "",
-    "Contacto": ""
+    "Contacto": "",
+    "Valoracion": 0
   }
 
   constructor(private _toastCtrl: ToastController, private _service: EmpresasService, private _activatedRoute: ActivatedRoute, private route: Router) { }
@@ -43,6 +44,7 @@ export class EditEmpresaPage implements OnInit {
   }
 
   modificarEmpresa(){
+    delete this.empresa.Valoracion;
     if(this.esCorrecto()){
       let ref2 = this._service.getListaEmpresas();
       ref2.child(this.key).set(this.empresa); //set es update

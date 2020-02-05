@@ -14,6 +14,7 @@ import {AngularFireDatabaseModule} from '@angular/fire/database';
 
 import {AlumnosService} from './Services/alumnos.service';
 import {EmpresasService} from './Services/empresas.services';
+import {ValoracionesService} from './Services/valoraciones.service';
 import {environment} from '../environments/environment';
 
 @NgModule({
@@ -28,6 +29,7 @@ import {environment} from '../environments/environment';
     SplashScreen,
     AlumnosService,
     EmpresasService,
+    ValoracionesService,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

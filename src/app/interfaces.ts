@@ -28,6 +28,5 @@ export interface IEmpresaKey extends IEmpresa{
 export interface IValoracion{
     "Comentario": string,
     "Empresa": string, //key de la empresa
-    "Usuario": string, //key del alumno
     "Valoracion": number
 }
