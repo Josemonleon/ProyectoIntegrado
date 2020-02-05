@@ -3,6 +3,7 @@ import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ActivatedRoute } from '@angular/router';
 import { IEmpresaKey} from 'src/app/interfaces';
 import {Router} from '@angular/router';
+import { Location } from '@angular/common';
 
 
 @Component({
@@ -14,7 +15,8 @@ export class InfoEmpresaPage implements OnInit {
 
   key: string;
 
-  constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
+    private route: Router, private location: Location) { }
 
   ngOnInit() {
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -32,6 +34,9 @@ export class InfoEmpresaPage implements OnInit {
     this.route.navigate(['../edit-empresa/' + this.key]);
   }
 
+  goBack(){
+    this.location.back();
+  }
 
   empresas: IEmpresaKey[] = [];
 

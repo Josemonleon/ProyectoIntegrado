@@ -57,7 +57,7 @@ export class EditEmpresaPage implements OnInit {
     let  nombreOK, localidadOK, contactoOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var regex2 = /^[a-zA-ZÀ-ÿ ]{2,}$/;
+    var regex2 = /^[a-zA-ZÀ-ÿ .]{2,}$/;
 
     if (regex.test(this.empresa.Contacto)) {
       contactoOK = true;

@@ -39,14 +39,21 @@
   <ion-card>
     <ion-card-header>
       <ion-card-subtitle>Tutor & Curso</ion-card-subtitle>
-      <ion-card-title>{{item.Tutor}} {{item.Curso}}</ion-card-title>
+      <ion-card-title>{{item.Tutor}} - {{item.Curso}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
-    <ion-card-header>
+    <ion-card-header *ngIf = "item.Empresa != 'Ninguna'" routerLink="/info-empresa/{{item.Empresa}}">
       <ion-card-subtitle>Empresa</ion-card-subtitle>
-      <ion-card-title>{{item.Empresa}}</ion-card-title>
+      <ion-card-title>{{empresa.Nombre}}</ion-card-title>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header *ngIf = "item.Empresa == 'Ninguna'">
+      <ion-card-subtitle>Empresa</ion-card-subtitle>
+      <ion-card-title>{{empresa.Nombre}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 

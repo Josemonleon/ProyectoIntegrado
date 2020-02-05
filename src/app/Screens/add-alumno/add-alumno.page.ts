@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IAlumno, IEmpresa } from 'src/app/interfaces';
+import { IAlumno, IEmpresa, IEmpresaKey } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ToastController } from '@ionic/angular';
@@ -18,12 +18,13 @@ export class AddAlumnoPage implements OnInit {
     ref.once("value", snapshot =>{
       snapshot.forEach(child => {
         let value = child.val();
+        value.key = child.key;
         this.empresas.push(value);
       })
     })
   }
 
-  empresas: IEmpresa[] = [];
+  empresas: IEmpresaKey[] = [];
 
   nombre: string = "";
   apellidos: string = "";
@@ -67,7 +68,7 @@ export class AddAlumnoPage implements OnInit {
     let correoOK, nombreOK, apellidosOK, tutorOK, localidadOK, cursoOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var regex2 = /^[a-zA-ZÀ-ÿ ]{2,}$/;
+    var regex2 = /^[a-zA-ZÀ-ÿ .]{2,}$/;
 
     if (regex.test(this.correo)) {
       correoOK = true;
