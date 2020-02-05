@@ -44,7 +44,7 @@ export class EditEmpresaPage implements OnInit {
   }
 
   modificarEmpresa(){
-    delete this.empresa.Valoracion;
+
     if(this.esCorrecto()){
       let ref2 = this._service.getListaEmpresas();
       ref2.child(this.key).set(this.empresa); //set es update
