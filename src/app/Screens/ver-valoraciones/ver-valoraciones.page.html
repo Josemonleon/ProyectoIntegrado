@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button (click)="goBack()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div align="center">
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">VALORACIONES </p>
+  </div>
+
+  <ion-card *ngFor="let item of valoraciones" >
+
+    <ion-card-header>
+      <ion-card-title>{{nombreEmpresa}} - {{item.Valoracion}}</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      {{item.Comentario}}
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

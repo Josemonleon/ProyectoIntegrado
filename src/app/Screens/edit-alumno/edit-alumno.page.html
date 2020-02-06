@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title> Be Keen </ion-title>
     <ion-buttons slot="secondary">
-      <ion-button href="/home">
+      <ion-button href="/info-alumno/{{key}}">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -12,44 +12,44 @@
 <ion-content>
 
   <div align="center">
-    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">NUEVO ALUMNO</p>
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN ALUMNO</p>
   </div>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Nombre:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="nombre"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Nombre"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Apellidos:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="apellidos"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Apellidos"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Email:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="correo"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Localidad:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="localidad"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Localidad"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Tutor:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="tutor"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Tutor"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label class="texto" position="stacked">Curso:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="curso"></ion-input>
+    <ion-input class="subtexto" clearInput [(ngModel)]="item.Curso"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label>Empresa asignada</ion-label>
-    <ion-select [(ngModel)]="empresa">
+    <ion-select [(ngModel)]="item.Empresa">
       <ion-select-option value="Ninguna">Ninguna</ion-select-option>
-      <ion-select-option *ngFor="let item of empresas" value="{{item.key}}">{{item.Nombre}}</ion-select-option>
+      <ion-select-option *ngFor="let item2 of empresas" value="{{item2.key}}">{{item2.Nombre}}</ion-select-option>
     </ion-select>
   </ion-item>
 
@@ -57,6 +57,6 @@
 
 <ion-footer class="texto" style="margin-top: 10px;">
   <ion-toolbar>
-    <ion-button (click)="addAlumno()" expand="full">AÑADIR ALUMNO<ion-icon slot="end" name="person-add"></ion-icon></ion-button>
+    <ion-button (click)="guardarCambios()" expand="full">GUARDAR CAMBIOS</ion-button>
   </ion-toolbar>
 </ion-footer>

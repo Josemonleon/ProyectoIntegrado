@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Link'em ship</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="register == false">
+    <ion-title>Acceso de usuarios</ion-title>
+    <ion-input placeholder="Nombre de usuario"></ion-input>
+    <ion-input placeholder="Contraseña"></ion-input>
+    <ion-button expand="full" color="secondary">Entrar</ion-button>
+    <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+  </div>
+
+  <div *ngIf= "register == true">
+    <ion-title>Alta usuario nuevo</ion-title>
+    <ion-input placeholder="Nombre de usuario"></ion-input>
+    <ion-input placeholder="Contraseña"></ion-input>
+    <ion-button expand="full" color="secondary">Registrar usuario nuevo </ion-button>
+    <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+  </div>
+
+</ion-content>

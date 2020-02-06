@@ -2,7 +2,7 @@
   <ion-toolbar>
     <ion-title> Be Keen </ion-title>
     <ion-buttons slot="secondary">
-      <ion-button href="/home/empresas">
+      <ion-button (click)="goBack()">
         <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,20 +11,30 @@
 
 <ion-content *ngFor="let item of empresas">
 
+  <div align="center">
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN EMPRESA</p>
+  </div>
 
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Nombre</ion-card-subtitle>
-      <ion-card-title>{{item.Nombre}}</ion-card-title>
-    </ion-card-header>
-  </ion-card>
-
-  <ion-card>
-    <ion-card-header>
-      <ion-card-subtitle>Localidad</ion-card-subtitle>
-      <ion-card-title>{{item.Localidad}}</ion-card-title>
-    </ion-card-header>
-  </ion-card>
+  <ion-row>
+    <ion-col size="6">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Nombre</ion-card-subtitle>
+          <ion-card-title>{{item.Nombre}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  
+    <ion-col size="6">
+  
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>Localidad</ion-card-subtitle>
+          <ion-card-title>{{item.Localidad}}</ion-card-title>
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 
   <ion-card>
     <ion-card-header>
@@ -33,12 +43,117 @@
     </ion-card-header>
   </ion-card>
 
-  
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Valoración</ion-card-subtitle>
+      <ion-card-title *ngIf = "item.Valoracion == 0">Esta empresa aun no ha sido valorada</ion-card-title>
+      <!-- Valoracion 1 | 1 estrella --> 
+      <ion-card-title *ngIf = "item.Valoracion >= 1 && item.Valoracion <= 1.25">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 1.25 a 1.75 | 1.5 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 1.25 && item.Valoracion <= 1.75">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 2 | 2 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 1.75 && item.Valoracion <= 2.25">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 2.25 a 2.75 | 2.5 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 2.25 && item.Valoracion <= 2.75">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 3 | 3 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 2.75 && item.Valoracion <= 3.25">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 3.25 a 3.75 | 3.5 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 3.25 && item.Valoracion <= 3.75">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 4 | 4 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 3.75 && item.Valoracion <= 4.25">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-outline"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 4.25 a 4.75 | 4.5 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 4.25 && item.Valoracion <= 4.75">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star-half"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+      <!-- Valoracion 5 | 5 estrellas -->
+      <ion-card-title *ngIf = "item.Valoracion > 4.75 && item.Valoracion <= 5">
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        <ion-icon name="star"></ion-icon>
+        - {{item.Valoracion}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-button expand="full" routerLink="/ver-valoraciones/{{item.key}}">VER VALORACIONES</ion-button>
+  </ion-card>
+
+    <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Añadir valoración:</ion-card-subtitle>
+      <ion-item>
+        <ion-label>Selecciona valoracion</ion-label>
+        <ion-select [(ngModel)]="rating">
+          <ion-select-option value="1">1☆</ion-select-option>
+          <ion-select-option value="2">2☆</ion-select-option>
+          <ion-select-option value="3">3☆</ion-select-option>
+          <ion-select-option value="4">4☆</ion-select-option>
+          <ion-select-option value="5">5☆</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-textarea [(ngModel)]="comentario" placeholder="Introduce un comentario"></ion-textarea>
+    </ion-card-header>
+    <ion-button expand="full" (click)="addValoracion()">AÑADIR VALORACIÓN</ion-button>
+  </ion-card>
 
 </ion-content>
 
 <ion-footer class="texto" style="margin-top: 10px;">
   <ion-toolbar>
-    <ion-button  expand="full">EDITAR INFORMACIÓN EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
+    <ion-button expand="full" (click)="editarEmpresa()">EDITAR INFORMACIÓN EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-footer>

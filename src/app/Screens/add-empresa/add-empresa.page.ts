@@ -38,24 +38,21 @@ export class AddEmpresaPage implements OnInit {
   }
 
 
-  insertarEmpresa(){
-    let empresa: IEmpresa={
-                                    "Nombre": this.nombre,
-                                    "Localidad": this.localidad,
-                                    "Contacto": this.contacto,                             
-                                  };
+  insertarEmpresa() {
+    let empresa: IEmpresa = {
+      "Nombre": this.nombre,
+      "Localidad": this.localidad,
+      "Contacto": this.contacto,
+      "Valoracion" : 0
+    };
 
-  if(this.esCorrecto()){
-    //Llamamos a la función que añade empresa en la bbdd de FireBase. Le pasamos el empresa por parametro.
-    this._service.setEmpresa(empresa);
-
-
-    this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
-  }else alert("Datos incorrectos");
+    if(this.esCorrecto()){
+      //Llamamos a la función que añade empresa en la bbdd de FireBase. Le pasamos el empresa por parametro.
+      this._service.setEmpresa(empresa);
+      this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
+    }else alert("Datos incorrectos");
     
-
   }
-
 
   //Funcion para comprobar si los datos introducidos son correctos
   esCorrecto(){
@@ -63,7 +60,7 @@ export class AddEmpresaPage implements OnInit {
     let  nombreOK, localidadOK, contactoOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-    var regex2 = /^[a-zA-ZÀ-ÿ ]{2,}$/;
+    var regex2 = /^[a-zA-ZÀ-ÿ .]{2,}$/;
 
     if (regex.test(this.contacto)) {
       contactoOK = true;
