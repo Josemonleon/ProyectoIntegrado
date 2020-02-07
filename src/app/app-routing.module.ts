@@ -34,6 +34,10 @@ const routes: Routes = [
     loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
   },
   {
+    path: 'info-empresa/:key/:bool',
+    loadChildren: () => import('./Screens/info-empresa/info-empresa.module').then( m => m.InfoEmpresaPageModule)
+  },
+  {
     path: 'edit-alumno',
     loadChildren: () => import('./Screens/edit-alumno/edit-alumno.module').then( m => m.EditAlumnoPageModule)
   },

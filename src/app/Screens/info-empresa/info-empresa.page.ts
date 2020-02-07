@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/Services/empresas.services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, } from '@angular/router';
 import { IEmpresaKey, IValoracion} from 'src/app/interfaces';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
@@ -15,12 +15,14 @@ import { ValoracionesService } from 'src/app/Services/valoraciones.service';
 export class InfoEmpresaPage implements OnInit {
 
   key: string;
+  editar : boolean = false;
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
-    private route: Router, private location: Location, private _valService: ValoracionesService) { }
+    private router: Router, private location: Location, private _valService: ValoracionesService) { }
 
   ngOnInit() {
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
+    this.editar = JSON.parse(this._activatedRoute.snapshot.paramMap.get("bool"));
 
     let ref = this._service.getListaEmpresas();
     ref.orderByKey().equalTo(this.key).once("value", snapshot => {
@@ -33,11 +35,16 @@ export class InfoEmpresaPage implements OnInit {
   }
 
   editarEmpresa(){
-    this.route.navigate(['../edit-empresa/' + this.key]);
+    this.router.navigate(['../edit-empresa/' + this.key]);
   }
 
   goBack(){
-    this.location.back();
+    if(this.editar){
+      const url = `/home/empresas`;
+      this.router.navigateByUrl(url);
+    } else {
+      this.location.back();
+    }
   }
 
   empresas: IEmpresaKey[] = [];

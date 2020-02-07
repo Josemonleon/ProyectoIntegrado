@@ -19,6 +19,7 @@ export class EditEmpresaPage implements OnInit {
     "Contacto": "",
     "Valoracion": 0
   }
+  bool: boolean = true;
 
   constructor(private _toastCtrl: ToastController, private _service: EmpresasService, private _activatedRoute: ActivatedRoute, private route: Router) { }
 
