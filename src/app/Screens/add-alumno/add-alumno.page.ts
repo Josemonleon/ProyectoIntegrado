@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAlumno, IEmpresa, IEmpresaKey } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-alumno',
@@ -11,7 +11,8 @@ import { ToastController } from '@ionic/angular';
 })
 export class AddAlumnoPage implements OnInit {
 
-  constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService) { }
+  constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService,
+    private navController : NavController) { }
 
   ngOnInit() {
     let ref = this._empService.getListaEmpresas();
@@ -33,6 +34,10 @@ export class AddAlumnoPage implements OnInit {
   tutor: string = "";
   correo: string = "";
   empresa: string = "Ninguna";
+
+  volver(){
+    this.navController.navigateRoot(['/home']); 
+  }
 
   addAlumno(){
     let alumno: IAlumno;

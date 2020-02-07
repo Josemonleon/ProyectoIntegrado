@@ -1,11 +1,14 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="primary">
+    <img style="width: 80px; height: 50px; float: left;" src="../../../assets/Images/logo.png">
+    <br>
     <ion-title> Be Keen </ion-title>
     <ion-buttons slot="secondary">
-      <ion-button href="/home">
+      <ion-button (click)="descargarDatos()">
         <ion-icon slot="icon-only" name="refresh"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <br>
   </ion-toolbar>
 </ion-header>
 
@@ -30,6 +33,6 @@
 
 <ion-footer style="margin-top: 10px;" no-border>
   <ion-toolbar>
-    <ion-button expand="block" routerLink="/add-alumno">AÑADIR ALUMNO</ion-button>
+    <ion-button expand="block" (click)="navAddAlumno()">AÑADIR ALUMNO</ion-button>
   </ion-toolbar>
 </ion-footer>

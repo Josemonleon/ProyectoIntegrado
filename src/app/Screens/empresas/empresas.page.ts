@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {IEmpresa, IEmpresaKey} from 'src/app/interfaces';
 import {EmpresasService} from '../../Services/empresas.services';
 import {Router} from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 
 
@@ -15,12 +16,23 @@ import {Router} from '@angular/router';
 export class EmpresasPage implements OnInit {
 
 
-  constructor(private _service: EmpresasService, private route: Router) { }
-
-
+  constructor(private _service: EmpresasService, private route: Router, private navController: NavController) { }
 
 
   ngOnInit() {
+    this.descargarDatos();
+  }
+
+  empresas: IEmpresaKey[] = [];
+
+  //Método para pasar la ruta
+  verInfo(key){
+    this.route.navigate(['../info-empresa/' + key]);
+  }
+  
+  descargarDatos(){
+    this.empresas = [];
+
     let ref = this._service.getListaEmpresas();
     ref.once("value", snapshot =>{
       snapshot.forEach(child => {
@@ -31,14 +43,9 @@ export class EmpresasPage implements OnInit {
     })
   }
 
-  empresas: IEmpresaKey[] = [];
-
-  //Método para pasar la ruta
-  verInfo(key){
-    this.route.navigate(['../info-empresa/' + key]);
+  navAddEmpresa(){
+    this.navController.navigateRoot(['/add-empresa']); 
   }
-  
-
 
 
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController } from '@ionic/angular';
+import { ToastController, NavController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/database' 
 import { IEmpresa } from '../../interfaces';
 import {EmpresasService} from '../../Services/empresas.services';
@@ -19,14 +19,11 @@ export class AddEmpresaPage implements OnInit {
 
 
 
-  constructor(private _toastCtrl: ToastController, private _db: AngularFireDatabase, private _service: EmpresasService) { }
+  constructor(private _toastCtrl: ToastController, private _db: AngularFireDatabase, private _service: EmpresasService,
+    private navController : NavController) { }
 
   ngOnInit() {
   }
-
-
-
-
 
   async presentToast() {  //Muestra el mensaje 'message' en el momento de ser creado. Se utiliza siendo llamado.
     const toast = await this._toastCtrl.create({
@@ -79,6 +76,10 @@ export class AddEmpresaPage implements OnInit {
       return false;
     }
 
+  }
+
+  volver(){
+    this.navController.navigateRoot(['/home/empresas']); 
   }
 
 

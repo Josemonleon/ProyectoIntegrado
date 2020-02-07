@@ -14,8 +14,17 @@ export class InfoAlumnoPage implements OnInit {
   constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService, private _empService:EmpresasService) { }
 
   async ngOnInit() {
+    //this.key = this._activatedRoute.snapshot.paramMap.get('key');
+  }
+
+  async ionViewWillEnter(){
     this.key = this._activatedRoute.snapshot.paramMap.get('key');
 
+    await this.descargarDatos();
+  }
+
+  async descargarDatos(){
+    
     let ref = this._service.getAlumnos().orderByKey().equalTo(this.key);
     await ref.once("value", snapshot => {
       snapshot.forEach(child => {

@@ -21,9 +21,18 @@ export class InfoEmpresaPage implements OnInit {
     private router: Router, private location: Location, private _valService: ValoracionesService) { }
 
   ngOnInit() {
+    //this.key = this._activatedRoute.snapshot.paramMap.get("key");
+    //this.editar = JSON.parse(this._activatedRoute.snapshot.paramMap.get("bool"));
+  }
+
+  ionViewWillEnter(){
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
     this.editar = JSON.parse(this._activatedRoute.snapshot.paramMap.get("bool"));
 
+    this.descargarDatos();
+  }
+
+  descargarDatos(){
     let ref = this._service.getListaEmpresas();
     ref.orderByKey().equalTo(this.key).once("value", snapshot => {
       snapshot.forEach(child => {
