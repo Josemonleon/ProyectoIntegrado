@@ -27,7 +27,7 @@ export class VerValoracionesPage implements OnInit {
       })
     })
 
-    let ref2 = this._empService.getListaEmpresas();
+    let ref2 = this._empService.getListaEmpresas().orderByKey().equalTo(this.empresaKey);
 
     ref2.once("value", snapshot => {
       snapshot.forEach(child => {

@@ -5,6 +5,7 @@ import { IEmpresaKey, IValoracion} from 'src/app/interfaces';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { ValoracionesService } from 'src/app/Services/valoraciones.service';
+import { NavController } from '@ionic/angular';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class InfoEmpresaPage implements OnInit {
   editar : boolean = false;
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
-    private router: Router, private location: Location, private _valService: ValoracionesService) { }
+    private router: Router, private location: Location, private _valService: ValoracionesService,
+    private navController: NavController) { }
 
   ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -54,6 +56,10 @@ export class InfoEmpresaPage implements OnInit {
     } else {
       this.location.back();
     }
+  }
+
+  verValoraciones(key){
+    this.navController.navigateRoot(['/ver-valoraciones/', key]); 
   }
 
   empresas: IEmpresaKey[] = [];

@@ -132,7 +132,8 @@
         - {{item.Valoracion}}
       </ion-card-title>
     </ion-card-header>
-    <ion-button expand="full" routerLink="/ver-valoraciones/{{item.key}}">VER VALORACIONES</ion-button>
+<!--<ion-button expand="full" routerLink="/ver-valoraciones/{{item.key}}">VER VALORACIONES</ion-button>-->
+    <ion-button expand="full" (click)="verValoraciones(item.key)">VER VALORACIONES</ion-button>
   </ion-card>
 
     <ion-card>
