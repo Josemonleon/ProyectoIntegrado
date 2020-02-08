@@ -29,12 +29,12 @@
     <ion-col size="5">
       <ion-item>
         <ion-label>Rating</ion-label>
-        <ion-select>
-          <ion-select-option value="1">1*</ion-select-option>
-          <ion-select-option value="2">2*</ion-select-option>
-          <ion-select-option value="3">3*</ion-select-option>
-          <ion-select-option value="4">4*</ion-select-option>
-          <ion-select-option value="5">5*</ion-select-option>
+        <ion-select [(ngModel)]="rating" (ionChange)="filtroValoracion()"> 
+          <ion-select-option value="1">1☆</ion-select-option>
+          <ion-select-option value="2">2☆</ion-select-option>
+          <ion-select-option value="3">3☆</ion-select-option>
+          <ion-select-option value="4">4☆</ion-select-option>
+          <ion-select-option value="5">5☆</ion-select-option>
         </ion-select>
       </ion-item>
     </ion-col>
@@ -43,10 +43,10 @@
   <ion-list>
     <ion-item *ngFor="let item of empresas">
       <ion-label (click)="verInfo(item.key)">{{item.Nombre}}</ion-label>
+      <ion-label *ngIf="item.Valoracion != 0" (click)="verInfo(item.key)" style="text-align: right;">{{item.Valoracion}}☆</ion-label>
+      <ion-label *ngIf="item.Valoracion == 0" (click)="verInfo(item.key)" style="text-align: right;">Sin valoraciones</ion-label>
     </ion-item>
-  </ion-list>
-
-  
+  </ion-list> 
 
 </ion-content>
 

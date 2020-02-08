@@ -24,6 +24,7 @@ export class EmpresasPage implements OnInit {
   }
 
   empresas: IEmpresaKey[] = [];
+  rating : number;
 
   //Método para pasar la ruta
   verInfo(key){
@@ -32,6 +33,7 @@ export class EmpresasPage implements OnInit {
   
   descargarDatos(){
     this.empresas = [];
+    this.rating = 6;
 
     let ref = this._service.getListaEmpresas();
     ref.once("value", snapshot =>{
@@ -41,11 +43,27 @@ export class EmpresasPage implements OnInit {
         this.empresas.push(value);
       })
     })
+
   }
 
   navAddEmpresa(){
     this.navController.navigateRoot(['/add-empresa']); 
   }
 
+  filtroValoracion(){
 
+    this.empresas = [];
+
+    let ref = this._service.getListaEmpresas().orderByChild("Valoracion").startAt(+this.rating).endAt(+this.rating+0.999999);
+
+      ref.once("value", snapshot => {
+        snapshot.forEach(child => {
+          let value = child.val();
+          value.key = child.key;
+          this.empresas.push(value);
+        })
+      })
+
+    console.log("hola");
+  }
 }

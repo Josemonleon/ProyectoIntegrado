@@ -73,7 +73,7 @@ export class InfoEmpresaPage implements OnInit {
 
     //Calculo la nueva valoracion de la empresa
     if(this.empresas[0].Valoracion == 0){
-      this.empresas[0].Valoracion = this.rating;
+      this.empresas[0].Valoracion = +this.rating;
     }
     else 
     {
