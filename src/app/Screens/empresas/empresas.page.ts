@@ -26,11 +26,6 @@ export class EmpresasPage implements OnInit {
   empresas: IEmpresaKey[] = [];
   rating : number;
 
-  //Método para pasar la ruta
-  verInfo(key){
-    this.route.navigate(['../info-empresa/' + key]);
-  }
-  
   descargarDatos(){
     this.empresas = [];
     this.rating = 6;
@@ -48,6 +43,10 @@ export class EmpresasPage implements OnInit {
 
   navAddEmpresa(){
     this.navController.navigateRoot(['/add-empresa']); 
+  }
+
+  navInfoEmpresa(key){
+    this.navController.navigateRoot(['/info-empresa/', key]); 
   }
 
   filtroValoracion(){

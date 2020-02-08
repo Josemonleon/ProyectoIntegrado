@@ -36,4 +36,8 @@ export class AlumnosPage implements OnInit {
     this.navController.navigateRoot(['/add-alumno']); 
   }
 
+  navInfoAlumno(key){
+    this.navController.navigateRoot(['/info-alumno/', key]); 
+  }
+
 }

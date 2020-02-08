@@ -25,7 +25,7 @@
 
   <ion-list>
     <ion-item *ngFor="let item of alumnos">
-      <ion-label routerLink="/info-alumno/{{item.key}}">{{item.Nombre}} {{item.Apellidos}}</ion-label >
+      <ion-label (click)="navInfoAlumno(item.key)">{{item.Nombre}} {{item.Apellidos}}</ion-label >
     </ion-item>
   </ion-list>
 
