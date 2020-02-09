@@ -25,19 +25,22 @@ export class EmpresasPage implements OnInit {
 
   empresas: IEmpresaKey[] = [];
   rating : number;
+  nombreEmpresa: string;
 
-  descargarDatos(){
+  async descargarDatos(){
     this.empresas = [];
     this.rating = 6;
 
     let ref = this._service.getListaEmpresas();
-    ref.once("value", snapshot =>{
+    await ref.once("value", snapshot =>{
       snapshot.forEach(child => {
         let value = child.val();
         value.key = child.key;
         this.empresas.push(value);
       })
     })
+
+    this.nombreEmpresa = "";
 
   }
 
@@ -55,14 +58,30 @@ export class EmpresasPage implements OnInit {
 
     let ref = this._service.getListaEmpresas().orderByChild("Valoracion").startAt(+this.rating).endAt(+this.rating+0.999999);
 
-      ref.once("value", snapshot => {
-        snapshot.forEach(child => {
-          let value = child.val();
-          value.key = child.key;
-          this.empresas.push(value);
-        })
+    ref.once("value", snapshot => {
+      snapshot.forEach(child => {
+        let value = child.val();
+        value.key = child.key;
+        this.empresas.push(value);
       })
+    })
 
-    console.log("hola");
+  }
+
+  filtroNombre(){
+    this.rating = 6; //Reinicio el filtro de valoracion para que solo filtre por el nombre
+    this.empresas = [];
+
+    let ref = this._service.getListaEmpresas();
+    ref.once("value", snapshot =>{
+      snapshot.forEach(child => {
+        let value = child.val();
+        value.key = child.key;
+        
+        if(value.Nombre.toLowerCase().includes(this.nombreEmpresa.toLowerCase())){
+          this.empresas.push(value);
+        }
+      })
+    })
   }
 }
