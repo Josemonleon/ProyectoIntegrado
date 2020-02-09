@@ -26,12 +26,13 @@ export class EmpresasPage implements OnInit {
   empresas: IEmpresaKey[] = [];
   rating : number;
   nombreEmpresa: string;
+  mayorMenor: boolean = true;
 
   async descargarDatos(){
     this.empresas = [];
     this.rating = 6;
 
-    let ref = this._service.getListaEmpresas();
+    let ref = this._service.getListaEmpresas().orderByChild("Valoracion");
     await ref.once("value", snapshot =>{
       snapshot.forEach(child => {
         let value = child.val();
@@ -41,6 +42,8 @@ export class EmpresasPage implements OnInit {
     })
 
     this.nombreEmpresa = "";
+
+    this.cambiarOrden();
 
   }
 
@@ -71,7 +74,7 @@ export class EmpresasPage implements OnInit {
 
   filtroNombre(){
     if(this.rating > 0 && this.rating < 6) {this.rating = 6;}
-     //Reinicio el filtro de valoracion para que solo filtre por el nombre
+
     this.empresas = [];
 
     let ref = this._service.getListaEmpresas();
@@ -85,5 +88,36 @@ export class EmpresasPage implements OnInit {
         }
       })
     })
+  }
+
+  cambiarOrden(){
+    var aux_array;
+    var long = this.empresas.length;
+
+    if(this.mayorMenor){
+      for (let i = 0; i < (long); i++) {
+        for (let j = 0; j < (long); j++) { 
+          if (+this.empresas[i].Valoracion > +this.empresas[j].Valoracion) { 
+  
+            aux_array = this.empresas[i];
+            this.empresas[i] = this.empresas[j];
+            this.empresas[j] = aux_array;
+          }
+        }
+      }
+      this.mayorMenor = false
+    } else {
+      for (let i = 0; i < (long); i++) {
+        for (let j = 0; j < (long); j++) { 
+          if (+this.empresas[i].Valoracion < +this.empresas[j].Valoracion) { 
+  
+            aux_array = this.empresas[i];
+            this.empresas[i] = this.empresas[j];
+            this.empresas[j] = aux_array;
+          }
+        }
+      }
+      this.mayorMenor = true
+    }
   }
 }
