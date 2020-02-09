@@ -53,23 +53,25 @@ export class EmpresasPage implements OnInit {
   }
 
   filtroValoracion(){
-
-    this.empresas = [];
-
-    let ref = this._service.getListaEmpresas().orderByChild("Valoracion").startAt(+this.rating).endAt(+this.rating+0.999999);
-
-    ref.once("value", snapshot => {
-      snapshot.forEach(child => {
-        let value = child.val();
-        value.key = child.key;
-        this.empresas.push(value);
+    if(this.rating > 0 && this.rating <6){
+      this.nombreEmpresa = "";
+      this.empresas = [];
+  
+      let ref = this._service.getListaEmpresas().orderByChild("Valoracion").startAt(+this.rating).endAt(+this.rating+0.999999);
+  
+      ref.once("value", snapshot => {
+        snapshot.forEach(child => {
+          let value = child.val();
+          value.key = child.key;
+          this.empresas.push(value);
+        })
       })
-    })
-
+    }
   }
 
   filtroNombre(){
-    this.rating = 6; //Reinicio el filtro de valoracion para que solo filtre por el nombre
+    if(this.rating > 0 && this.rating < 6) {this.rating = 6;}
+     //Reinicio el filtro de valoracion para que solo filtre por el nombre
     this.empresas = [];
 
     let ref = this._service.getListaEmpresas();
