@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 
+import { AngularFireAuthModule } from '@angular/fire/auth' //Login Authentication
+
 import {AlumnosService} from './Services/alumnos.service';
 import {EmpresasService} from './Services/empresas.services';
 import {ValoracionesService} from './Services/valoraciones.service';
@@ -22,7 +24,7 @@ import {environment} from '../environments/environment';
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule, AngularFireAuthModule,
   ],
   providers: [
     StatusBar,

@@ -1,25 +1,34 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Link'em ship</ion-title>
+  <ion-toolbar color="primary">
+    <img style="width: 80px; height: 50px; float: left;" src="../../../assets/Images/logo.png">
+    <br>
+    <ion-title> Be Keen </ion-title>
+    <ion-buttons slot="secondary">
+    </ion-buttons>
+    <br>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div align="center">
+    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px; text-decoration: underline;">ENTRA O REGÍSTRATE</p>
+  </div>
+
 
   <div *ngIf="register == false">
     <ion-title>Acceso de usuarios</ion-title>
-    <ion-input placeholder="Nombre de usuario"></ion-input>
-    <ion-input placeholder="Contraseña"></ion-input>
-    <ion-button expand="full" color="secondary">Entrar</ion-button>
-    <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+    <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+    <ion-input [(ngModel)]="password" placeholder="Contraseña"></ion-input>
+    <ion-button expand="full" color="secondary" (click)="onLogin()">Entrar</ion-button>
+    <ion-button expand="full" color="secondary" (click)="changeRegisterState()">No tengo usuario</ion-button>
   </div>
 
   <div *ngIf= "register == true">
     <ion-title>Alta usuario nuevo</ion-title>
-    <ion-input placeholder="Nombre de usuario"></ion-input>
-    <ion-input placeholder="Contraseña"></ion-input>
-    <ion-button expand="full" color="secondary">Registrar usuario nuevo </ion-button>
-    <ion-button (click)="changeRegisterState()">{{botonAlta}}</ion-button>
+    <ion-input [(ngModel)]="email" placeholder="Email"></ion-input>
+    <ion-input [(ngModel)]="password" placeholder="Contraseña"></ion-input>
+    <ion-button expand="full" color="secondary" (click)="onRegister()">Registrar usuario</ion-button>
+    <ion-button expand="full" color="secondary" (click)="changeRegisterState()">Ya tengo una cuenta</ion-button>
   </div>
 
 </ion-content>
