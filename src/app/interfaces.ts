@@ -14,7 +14,8 @@ export interface IAlumno {
     "Email": string,
     "Localidad": string,
     "Tutor": string,
-    "Empresa": string
+    "Empresa": string,
+    "Dni": string
 }
 
 export interface IAlumnoKey extends IAlumno{

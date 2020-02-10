@@ -55,9 +55,27 @@ export class EditAlumnoPage implements OnInit {
     toast.present();
   }
 
+  async presentToastDniLetraIncorrecta() {
+    const toast = await this.toastController.create({
+      message: 'Dni erroneo, la letra del NIF no se corresponde',
+      duration: 4000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
+  async presentToastDniIncorrecto() {
+    const toast = await this.toastController.create({
+      message: 'Dni erroneo, formato no válido',
+      duration: 4000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
   esCorrecto(){
 
-    let correoOK, nombreOK, apellidosOK, tutorOK, localidadOK, cursoOK;
+    let dniOK, correoOK, nombreOK, apellidosOK, tutorOK, localidadOK, cursoOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var regex2 = /^[a-zA-ZÀ-ÿ .]{2,}$/;
@@ -74,7 +92,11 @@ export class EditAlumnoPage implements OnInit {
     (regex2.test(this.item.Localidad)) ? localidadOK=true : localidadOK=false;
     (regex2.test(this.item.Curso)) ? cursoOK=true : cursoOK=false;
 
-    if(correoOK && nombreOK && apellidosOK && tutorOK && localidadOK && cursoOK){
+    dniOK = this.nif();    
+
+
+
+    if(correoOK && nombreOK && apellidosOK && tutorOK && localidadOK && cursoOK && dniOK){
       console.log("Todo correcto");
       return true;
     } else {
@@ -82,6 +104,36 @@ export class EditAlumnoPage implements OnInit {
       return false;
     }
 
+  }
+
+
+   nif(): boolean {
+    var dniOK
+    var numero
+    var letr
+    var letra
+    var expresion_regular_dni
+   
+    expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+   
+    if(expresion_regular_dni.test (this.item.Dni) == true){
+       numero = this.item.Dni.substr(0,this.item.Dni.length-1);
+       letr = this.item.Dni.substr(this.item.Dni.length-1,1);
+       numero = numero % 23;
+       letra='TRWAGMYFPDXBNJZSQVHLCKET';
+       letra=letra.substring(numero,numero+1);
+      if (letra!=letr.toUpperCase()) {
+         dniOK = false;
+         this.presentToastDniLetraIncorrecta();
+       }else{
+         dniOK = true;
+       }
+    }else{
+       dniOK = false;
+       this.presentToastDniIncorrecto();
+     }
+
+     return dniOK
   }
 
   key: string;
@@ -92,7 +144,8 @@ export class EditAlumnoPage implements OnInit {
     "Localidad": "",
     "Nombre": "",
     "Tutor": "",
-    "Empresa": ""
+    "Empresa": "",
+    "Dni": ""
   };
   empresas: IEmpresaKey[] = [];
 }
