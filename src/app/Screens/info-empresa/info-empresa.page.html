@@ -18,7 +18,7 @@
     <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN EMPRESA</p>
   </div>
 
-  <ion-row>
+  <ion-row style="height: 95px;">
     <ion-col size="6">
       <ion-card>
         <ion-card-header>
@@ -158,6 +158,7 @@
 
 <ion-footer class="texto" style="margin-top: 10px;" no-border>
   <ion-toolbar>
+    <ion-button expand="full" (click)="alumnosAsignados()">ALUMNOS ASIGNADOS<ion-icon slot="end" name="people"></ion-icon></ion-button>
     <ion-button expand="full" (click)="editarEmpresa()">EDITAR INFORMACIÓN EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-footer>
