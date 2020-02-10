@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../../Services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,8 +12,12 @@ export class LoginPage implements OnInit {
   register : boolean = false;
   botonAlta :string = "No tengo usuario";
 
+  //nombre: string;
+  email: string;
+  password:string;
 
-  constructor() { }
+
+  constructor(private _authService : AuthService, private router: Router) { }
 
   ngOnInit() {
     console.log('\nregister');
@@ -25,5 +31,20 @@ export class LoginPage implements OnInit {
     console.log('\nregister');
     console.log(this.register);
   }
+
+  async onRegister(){
+    const user = await this._authService.onRegister(this.email, this.password)
+  }
+
+  async onLogin(){
+    const user = await this._authService.onLogin(this.email, this.password)
+
+    if(user){
+      console.log("Sesion iniciada correctamente");
+      this.router.navigateByUrl('/home')
+    }
+  }
+
+
 
 }
