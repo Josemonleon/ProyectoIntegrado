@@ -19,7 +19,7 @@
   </div>
 
   <ion-item>
-    <ion-input clearInput placeholder="Introduce nombre alumno"></ion-input>
+    <ion-input (ionChange)="filtroAlumnos()" clearInput placeholder="Introduce nombre alumno" [(ngModel)]="nombreAlumno"></ion-input>
     <ion-icon name="search" slot="end"></ion-icon>
   </ion-item>
 

@@ -17,6 +17,7 @@ export class AlumnosPage implements OnInit {
   }
 
   alumnos: IAlumnoKey[] = [];
+  nombreAlumno: string;
 
   descargarDatos(){
 
@@ -38,6 +39,26 @@ export class AlumnosPage implements OnInit {
 
   navInfoAlumno(key){
     this.navController.navigateRoot(['/info-alumno/', key]); 
+  }
+
+  async filtroAlumnos(){
+    this.alumnos = [];
+
+    let ref = this._service.getAlumnos();
+    await ref.once("value", snapshot => {
+      snapshot.forEach(child => {
+        let value = child.val();
+        value.key=child.key;
+
+        if(value.Nombre.toLowerCase().includes(this.nombreAlumno.toLowerCase()) || 
+          value.Apellidos.toLowerCase().includes(this.nombreAlumno.toLowerCase()) ||
+          (value.Nombre + " " + value.Apellidos).toLowerCase().includes(this.nombreAlumno.toLowerCase())
+        ){ 
+          this.alumnos.push(value);
+        }
+
+      })
+    })
   }
 
 }
