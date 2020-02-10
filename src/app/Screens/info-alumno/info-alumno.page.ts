@@ -52,7 +52,8 @@ export class InfoAlumnoPage implements OnInit {
     "Localidad": "",
     "Nombre": "",
     "Tutor": "",
-    "Empresa": ""
+    "Empresa": "",
+    "Dni": ""
   };
 
   empresa: Object = {}
