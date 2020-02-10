@@ -4,6 +4,7 @@ export interface IEmpresa{
     "Nombre": string,
     "Contacto": string,
     "Localidad": string,
+    "Nif": string,
     "Valoracion": number
 }
 

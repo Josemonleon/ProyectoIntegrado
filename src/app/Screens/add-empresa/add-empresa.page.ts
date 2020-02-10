@@ -11,24 +11,50 @@ import {EmpresasService} from '../../Services/empresas.services';
 })
 export class AddEmpresaPage implements OnInit {
 
-
   //Datos de la empresa nueva
   nombre: string = "";
   localidad: string = "";
   contacto: string = "";
-
-
+  nif: string = "";
 
   constructor(private _toastCtrl: ToastController, private _db: AngularFireDatabase, private _service: EmpresasService,
     private navController : NavController) { }
 
+    empresas: IEmpresa[] = [];
+
   ngOnInit() {
-  }
+    let ref = this._service.getListaEmpresas();
+    ref.once("value", snapshot =>{
+      snapshot.forEach(child => {
+        let value = child.val();
+        value.key = child.key;
+        this.empresas.push(value);
+      })
+    })
+  } 
 
   async presentToast() {  //Muestra el mensaje 'message' en el momento de ser creado. Se utiliza siendo llamado.
     const toast = await this._toastCtrl.create({
       message: 'Empresa añadida correctamente',
       duration: 1000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
+  async presentToastDniIncorrecto() {
+    const toast = await this._toastCtrl.create({
+      message: 'Dni erroneo, formato no válido',
+      duration: 4000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
+  async presentToastDniLetraIncorrecta() {
+    const toast = await this._toastCtrl.create({
+      message: 'Dni erroneo, la letra del NIF no se corresponde',
+      duration: 4000,
       position: "bottom"
     });
     toast.present();
@@ -40,13 +66,17 @@ export class AddEmpresaPage implements OnInit {
       "Nombre": this.nombre,
       "Localidad": this.localidad,
       "Contacto": this.contacto,
+      "Nif": this.nif,
       "Valoracion" : 0
     };
 
-    if(this.esCorrecto()){
-      //Llamamos a la función que añade empresa en la bbdd de FireBase. Le pasamos el empresa por parametro.
-      this._service.setEmpresa(empresa);
-      this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
+     //Llamamos a la función que añade empresa en la bbdd de FireBase. Le pasamos el empresa por parametro
+    if(this.esCorrecto()){  
+      //Si el dni no esta en uso
+      if(!this.existeDniEmpresa()){
+        this._service.setEmpresa(empresa);
+        this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
+      }else alert("El NIF está en uso");
     }else alert("Datos incorrectos");
     
   }
@@ -54,7 +84,7 @@ export class AddEmpresaPage implements OnInit {
   //Funcion para comprobar si los datos introducidos son correctos
   esCorrecto(){
 
-    let  nombreOK, localidadOK, contactoOK;
+    let  nombreOK, localidadOK, contactoOK, NifOK;
 
     var regex = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     var regex2 = /^[a-zA-ZÀ-ÿ .]{2,}$/;
@@ -68,8 +98,9 @@ export class AddEmpresaPage implements OnInit {
     (regex2.test(this.nombre)) ? nombreOK=true : nombreOK=false;
     (regex2.test(this.localidad)) ? localidadOK=true : localidadOK=false;
 
-    if(nombreOK && localidadOK && contactoOK){
-      console.log("Todo correcto");
+    NifOK = this.nifEmpresa();
+
+    if(nombreOK && localidadOK && contactoOK && NifOK){ 
       return true;
     } else {
       console.log("Algun error");
@@ -78,16 +109,48 @@ export class AddEmpresaPage implements OnInit {
 
   }
 
+  nifEmpresa(): boolean {
+    var nifOk
+    var numero
+    var letr
+    var letra
+    var expresion_regular_dni
+   
+    expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+   
+    if(expresion_regular_dni.test (this.nif) == true){
+       numero = this.nif.substr(0,this.nif.length-1);
+       letr = this.nif.substr(this.nif.length-1,1);
+       numero = numero % 23;
+       letra='TRWAGMYFPDXBNJZSQVHLCKET';
+       letra=letra.substring(numero,numero+1);
+      if (letra!=letr.toUpperCase()) {
+          nifOk = false;
+         this.presentToastDniLetraIncorrecta();
+       }else{
+          nifOk = true;
+       }
+    }else{
+        nifOk = false;
+       this.presentToastDniIncorrecto();
+     }
+
+     return nifOk;
+  }
+
+  existeDniEmpresa(){
+    let existe: boolean = false;
+
+    for(let i=0; i<this.empresas.length; i++){
+      if(this.nif == this.empresas[i].Nif){
+        existe = true;
+      }
+    }
+    return existe;
+  }
+
   volver(){
     this.navController.navigateRoot(['/home/empresas']); 
   }
-
-
-
-
-
-
-
-
 
 }
