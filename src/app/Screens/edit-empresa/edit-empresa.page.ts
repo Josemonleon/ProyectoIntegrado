@@ -17,7 +17,8 @@ export class EditEmpresaPage implements OnInit {
     "Nombre": "",
     "Localidad": "",
     "Contacto": "",
-    "Valoracion": 0
+    "Valoracion": 0,
+    "Nif": ""
   }
   bool: boolean = true;
 
