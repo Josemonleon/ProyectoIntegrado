@@ -65,6 +65,14 @@ const routes: Routes = [
   {
     path: 'ver-valoraciones/:empresa',
     loadChildren: () => import('./Screens/ver-valoraciones/ver-valoraciones.module').then( m => m.VerValoracionesPageModule)
+  },
+  {
+    path: 'alumnos-asignados',
+    loadChildren: () => import('./Screens/alumnos-asignados/alumnos-asignados.module').then( m => m.AlumnosAsignadosPageModule)
+  },
+  {
+    path: 'alumnos-asignados/:empresaKey',
+    loadChildren: () => import('./Screens/alumnos-asignados/alumnos-asignados.module').then( m => m.AlumnosAsignadosPageModule)
   }
 ];
 

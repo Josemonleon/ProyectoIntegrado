@@ -62,6 +62,10 @@ export class InfoEmpresaPage implements OnInit {
     this.navController.navigateRoot(['/ver-valoraciones/', key]); 
   }
 
+  alumnosAsignados(){
+    this.navController.navigateRoot(['/alumnos-asignados/', this.key]); 
+  }
+
   empresas: IEmpresaKey[] = [];
   comentario : string = "";
   rating : number;
