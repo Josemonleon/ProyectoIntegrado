@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ActivatedRoute, } from '@angular/router';
-import { IEmpresaKey, IValoracion} from 'src/app/interfaces';
+import { IEmpresaKey, IValoracion, IAlumnoKey} from 'src/app/interfaces';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { ValoracionesService } from 'src/app/Services/valoraciones.service';
 import { NavController } from '@ionic/angular';
+import { AlumnosService } from 'src/app/Services/alumnos.service';
 
 
 @Component({
@@ -17,10 +18,13 @@ export class InfoEmpresaPage implements OnInit {
 
   key: string;
   editar : boolean = false;
+  empresas: IEmpresaKey[] = [];
+  comentario : string = "";
+  rating : number;
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
     private router: Router, private location: Location, private _valService: ValoracionesService,
-    private navController: NavController) { }
+    private navController: NavController, private _alService: AlumnosService) { }
 
   ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -66,10 +70,6 @@ export class InfoEmpresaPage implements OnInit {
     this.navController.navigateRoot(['/alumnos-asignados/', this.key]); 
   }
 
-  empresas: IEmpresaKey[] = [];
-  comentario : string = "";
-  rating : number;
-
   addValoracion(){
     //Añado la valoracion a la lista de valoraciones
     let valoracion: IValoracion = 
@@ -95,6 +95,48 @@ export class InfoEmpresaPage implements OnInit {
     
     //Recargo la pantalla
     console.log("Valoracion añadida correctamente")
+  }
+
+  eliminarEmpresa(){
+    let ref = this._service.getListaEmpresas();
+
+    ref.orderByKey().equalTo(this.key).once("value", snapshot => {
+      snapshot.forEach(child => {
+        let clave = child.key;
+        ref.child(clave).remove();
+      })
+    })
+
+    console.log("Empresa eliminada correctamente")
+
+    this.router.navigate(['/home/empresas']);
+  }
+
+  async desasignarEmpresa(){
+
+    //Descargo todos los alumnos que tienen la empresa asignada
+    let alumnos: IAlumnoKey[] = [];
+    let ref = this._alService.getAlumnos().orderByChild("Empresa").equalTo(this.key);
+
+    await ref.once("value", snapshot => {
+      snapshot.forEach(child => {
+        let value = child.val();
+        value.key=child.key;
+        console.log("Alumno: " + value.Nombre)
+        alumnos.push(value);
+      })
+    })
+
+    //Cambio la empresa asignada a ninguna
+    let ref2 = this._alService.getAlumnos();
+
+    for (let i = 0; i < alumnos.length; i++) {
+      alumnos[i].Empresa = "Ninguna";
+      ref2.child(alumnos[i].key).set(alumnos[i]);
+    }
+
+    //Llamo al metodo para eliminar la empresa
+    this.eliminarEmpresa();
   }
 
 }
