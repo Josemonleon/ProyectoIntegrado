@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IAlumno } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
@@ -11,7 +11,8 @@ import { EmpresasService } from 'src/app/Services/empresas.services';
 })
 export class InfoAlumnoPage implements OnInit {
 
-  constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService, private _empService:EmpresasService) { }
+  constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService, private _empService:EmpresasService,
+    private router: Router) { }
 
   async ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get('key');
@@ -22,6 +23,19 @@ export class InfoAlumnoPage implements OnInit {
 
     await this.descargarDatos();
   }
+  
+  empresa: Object = {}
+  key: string;
+  item: IAlumno = {
+    "Apellidos": "",
+    "Curso": "",
+    "Email": "",
+    "Localidad": "",
+    "Nombre": "",
+    "Tutor": "",
+    "Empresa": "",
+    "Dni": ""
+  };
 
   async descargarDatos(){
     
@@ -44,17 +58,19 @@ export class InfoAlumnoPage implements OnInit {
     }
   }
 
-  key: string;
-  item: IAlumno = {
-    "Apellidos": "",
-    "Curso": "",
-    "Email": "",
-    "Localidad": "",
-    "Nombre": "",
-    "Tutor": "",
-    "Empresa": "",
-    "Dni": ""
-  };
+  elimiarAlumno(){
+    let ref = this._service.getAlumnos();
 
-  empresa: Object = {}
+    ref.orderByKey().equalTo(this.key).once("value", snapshot => {
+      snapshot.forEach(child => {
+        let clave = child.key;
+        ref.child(clave).remove();
+      })
+    })
+
+    console.log("Alumno eliminado correctamente")
+
+    this.router.navigate(['/home']);
+  }
+
 }
