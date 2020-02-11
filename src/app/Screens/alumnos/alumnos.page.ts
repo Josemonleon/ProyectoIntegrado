@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAlumno, IAlumnoKey } from 'src/app/interfaces';
 import { AlumnosService } from '../../Services/alumnos.service';
 import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-alumnos',
@@ -10,7 +11,7 @@ import { NavController } from '@ionic/angular';
 })
 export class AlumnosPage implements OnInit {
 
-  constructor(private _service: AlumnosService, private navController: NavController) { }
+  constructor(private _service: AlumnosService, private navController: NavController, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     this.descargarDatos();
@@ -39,6 +40,11 @@ export class AlumnosPage implements OnInit {
 
   navInfoAlumno(key){
     this.navController.navigateRoot(['/info-alumno/', key]); 
+  }
+
+  onLogout(){
+    this.afAuth.auth.signOut();
+    this.navController.navigateRoot(['/login']); 
   }
 
   async filtroAlumnos(){

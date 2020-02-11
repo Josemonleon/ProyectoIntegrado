@@ -3,6 +3,7 @@ import {IEmpresa, IEmpresaKey} from 'src/app/interfaces';
 import {EmpresasService} from '../../Services/empresas.services';
 import {Router} from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 
@@ -16,7 +17,7 @@ import { NavController } from '@ionic/angular';
 export class EmpresasPage implements OnInit {
 
 
-  constructor(private _service: EmpresasService, private route: Router, private navController: NavController) { }
+  constructor(private _service: EmpresasService, private route: Router, private navController: NavController, private afAuth: AngularFireAuth) { }
 
 
   ngOnInit() {
@@ -119,5 +120,10 @@ export class EmpresasPage implements OnInit {
       }
       this.mayorMenor = true
     }
+  }
+
+  onLogout(){
+    this.afAuth.auth.signOut();
+    this.navController.navigateRoot(['/login']); 
   }
 }

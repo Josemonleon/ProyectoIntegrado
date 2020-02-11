@@ -45,6 +45,8 @@ export class LoginPage implements OnInit {
     }
   }
 
-
+  verInfo(){
+    alert("App realizada por: \n · Sergio Girona Soriano \n · Glòria Sedó Guillem \n · Álvaro Argüelles Delgado \n · Francisco Lobo García \n · José Monleón López")
+  }
 
 }
