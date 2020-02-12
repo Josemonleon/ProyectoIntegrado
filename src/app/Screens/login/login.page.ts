@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginPage implements OnInit {
   password:string;
 
 
-  constructor(private _authService : AuthService, private router: Router) { }
+  constructor(private _authService : AuthService, private router: Router, private alertController: AlertController) { }
 
   ngOnInit() {
     console.log('\nregister');
@@ -45,8 +46,15 @@ export class LoginPage implements OnInit {
     }
   }
 
-  verInfo(){
-    alert("App realizada por: \n · Sergio Girona Soriano \n · Glòria Sedó Guillem \n · Álvaro Argüelles Delgado \n · Francisco Lobo García \n · José Monleón López")
+  async verInfo() {
+    const alert = await this.alertController.create({
+      header: 'Información',
+      message:
+        "BeKeen la app de gestión eficiente para la asignación de alumnos a empresas. Accede a toda la información de forma rápida y fácil. <br><br>" + 
+        "Desarrollada por: <br><br> · Sergio Girona Soriano <br> · Glòria Sedó Guillem <br> · Álvaro Argüelles Delgado <br> · Francisco Lobo García <br> · José Monleón López"
+    });
+
+    await alert.present();
   }
 
 }

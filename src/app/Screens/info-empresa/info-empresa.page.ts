@@ -5,7 +5,7 @@ import { IEmpresaKey, IValoracion, IAlumnoKey} from 'src/app/interfaces';
 import {Router} from '@angular/router';
 import { Location } from '@angular/common';
 import { ValoracionesService } from 'src/app/Services/valoraciones.service';
-import { NavController } from '@ionic/angular';
+import { NavController, AlertController } from '@ionic/angular';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 
 
@@ -24,7 +24,7 @@ export class InfoEmpresaPage implements OnInit {
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
     private router: Router, private location: Location, private _valService: ValoracionesService,
-    private navController: NavController, private _alService: AlumnosService) { }
+    private navController: NavController, private _alService: AlumnosService, private alertController: AlertController) { }
 
   ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -137,6 +137,27 @@ export class InfoEmpresaPage implements OnInit {
 
     //Llamo al metodo para eliminar la empresa
     this.eliminarEmpresa();
+  }
+
+  async confirmacion() {
+    const alert = await this.alertController.create({
+      header: 'Confirmación',
+      message: '¿Está seguro de que quiere eliminar?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+        }, {
+          text: 'Eliminar',
+          handler: () => {
+            console.log('Confirm Okay');
+            this.desasignarEmpresa();
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
 }
