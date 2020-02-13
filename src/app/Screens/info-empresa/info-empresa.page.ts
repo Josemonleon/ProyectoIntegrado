@@ -135,6 +135,16 @@ export class InfoEmpresaPage implements OnInit {
       ref2.child(alumnos[i].key).set(alumnos[i]);
     }
 
+    //Elimino las valoraciones de la empresa
+    let ref3 = this._valService.getValoraciones();
+
+    ref3.orderByChild("Empresa").equalTo(this.key).once("value", snapshot => {
+      snapshot.forEach(child => {
+        let clave = child.key;
+        ref3.child(clave).remove();
+      })
+    })
+
     //Llamo al metodo para eliminar la empresa
     this.eliminarEmpresa();
   }
