@@ -22,11 +22,11 @@ import { HomePage } from './home.page';
         children: [
           {
             path: "alumnos",
-            loadChildren: '../Screens/alumnos/alumnos.module#AlumnosPageModule'
+            loadChildren: () => import('../Screens/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
           },
           {
             path: "empresas",
-            loadChildren: '../Screens/empresas/empresas.module#EmpresasPageModule'
+            loadChildren: () => import('../Screens/empresas/empresas.module').then( m => m.EmpresasPageModule)
           },
         ]
       }
