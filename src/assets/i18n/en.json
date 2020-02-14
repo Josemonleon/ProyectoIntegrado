@@ -11,6 +11,23 @@
             "PLACEHOLDER_CONTRASEÑA": "Enter your password here",
             "ALERT_NUEVACUENTA": "Account created successfully",
             "INFO" : "BeKeen the efficient management app for the assignment of students to companies. Access all the information quickly and easily <br><br>. Developed by: <br><br> · Sergio Girona Soriano <br> · Glòria Sedó Guillem <br> · Álvaro Argüelles Delgado <br> · Francisco Lobo García <br> · José Monleón López"
-          }
+        },
+        "Add-Alumno":{
+            "TITULO": "NEW STUDENT:",
+            "NOMBRE": "Name:",
+            "APELLIDOS": "Surname:",
+            "EMAIL": "Email:",
+            "LOCALIDAD": "Location:",
+            "TUTOR": "Tutor:",
+            "CURSO": "Course:",
+            "EMPRESA": "Assigned company",
+            "NINGUNA": "None",
+            "BTN_ADD": "ADD STUDENT",
+            "DNI_INCORRECTO": "Wrong DNI, invalid format",
+            "LETRA_INCORRECTA": "Wrong DNI, the letter of the DNI does not correspond",
+            "ALUMNO_AÑADIDO": "Student successfully added",
+            "DNI_USADO": "The DNI entered is in use",
+            "DATOS_INCORRECTOS": "Error in any of the fields"
+        }
     }
 }

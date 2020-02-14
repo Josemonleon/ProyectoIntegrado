@@ -4,6 +4,8 @@ import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ToastController, NavController } from '@ionic/angular';
 
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-add-alumno',
   templateUrl: './add-alumno.page.html',
@@ -12,7 +14,7 @@ import { ToastController, NavController } from '@ionic/angular';
 export class AddAlumnoPage implements OnInit {
 
   constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService,
-    private navController : NavController) { }
+    private navController : NavController, private _translate: TranslateService) { }
 
   ngOnInit() {
     let ref = this._empService.getListaEmpresas();
@@ -31,6 +33,8 @@ export class AddAlumnoPage implements OnInit {
         this.alumnos.push(value);
       })
     })
+
+    this.cambiaIdioma();
   }
 
   empresas: IEmpresaKey[] = [];
@@ -45,6 +49,12 @@ export class AddAlumnoPage implements OnInit {
   empresa: string = "Ninguna";
   dni: string = "";
 
+  idioma: string = "en";
+
+  cambiaIdioma() {
+    console.log(`Traduzco a: ${this.idioma}`);
+    this._translate.use(this.idioma);
+  }
 
   volver(){
     this.navController.navigateRoot(['/home']); 
@@ -70,15 +80,30 @@ export class AddAlumnoPage implements OnInit {
         this._service.setAlumno(alumno);
         this.presentToast();
       } else {
-        alert("El DNI introducido está en uso")
+        this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe(
+          value => {
+            alert(value)
+          }
+        )
       }
-
     } else {
-      alert("Error en alguno de los campos")
+      this._translate.get('PAGES.Add-Alumno.DATOS_INCORRECTOS').subscribe(
+        value => {
+          alert(value)
+        }
+      )
     }
   }
 
   async presentToast() {
+    let alertTitle;
+
+    this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+
     const toast = await this.toastController.create({
       message: 'Alumno añadido correctamente',
       duration: 4000,
@@ -88,8 +113,16 @@ export class AddAlumnoPage implements OnInit {
   }
 
   async presentToastDniLetraIncorrecta() {
+    let alertTitle;
+
+    this._translate.get('PAGES.Add-Alumno.LETRA_INCORRECTA').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+    
     const toast = await this.toastController.create({
-      message: 'Dni erroneo, la letra del NIF no se corresponde',
+      message: alertTitle,
       duration: 4000,
       position: "bottom"
     });
@@ -97,8 +130,17 @@ export class AddAlumnoPage implements OnInit {
   }
 
   async presentToastDniIncorrecto() {
+
+    let alertTitle;
+
+    this._translate.get('PAGES.Add-Alumno.DNI_INCORRECTO').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+    
     const toast = await this.toastController.create({
-      message: 'Dni erroneo, formato no válido',
+      message: alertTitle,
       duration: 4000,
       position: "bottom"
     });
