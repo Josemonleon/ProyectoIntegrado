@@ -16,33 +16,43 @@
   <img class="imagenLogo" src="../../../assets/Images/logo3.png">
 
   <ion-item>
-    <ion-label class="texto" position="stacked" style="padding-bottom: 15px;">EMAIL:</ion-label>
-    <ion-input class="subtexto" clearInput [(ngModel)]="email" placeholder="Introduce aqui tu email"></ion-input>
+    <ion-label class="texto" position="stacked" style="padding-bottom: 15px;">{{ 'PAGES.Login.EMAIL' | translate }}</ion-label>
+    <ion-input class="subtexto" clearInput [(ngModel)]="email" placeholder="{{ 'PAGES.Login.PLACEHOLDER_EMAIL' | translate }}"></ion-input>
   </ion-item><br>
 
   <ion-item>
-    <ion-label class="texto" position="stacked"  style="padding-bottom: 15px;">CONTRASEÑA:</ion-label>
-    <ion-input type="password" class="subtexto" clearInput [(ngModel)]="password" placeholder="Introduce aqui tu contraseña">
+    <ion-label class="texto" position="stacked"  style="padding-bottom: 15px;">{{ 'PAGES.Login.CONTRASEÑA' | translate }}</ion-label>
+    <ion-input type="password" class="subtexto" clearInput [(ngModel)]="password" placeholder="{{ 'PAGES.Login.PLACEHOLDER_CONTRASEÑA' | translate }}">
     </ion-input>
   </ion-item>
 
   <div class="crearCuenta" >
-    <ion-label (click)="changeRegisterState()" *ngIf="register == false" >¿No tienes cuenta? Pulsa aqui para crear una.</ion-label>
+    <ion-label (click)="changeRegisterState()" *ngIf="register == false" >{{ 'PAGES.Login.CREAR_CUENTA' | translate }}</ion-label>
   </div>
 
 </ion-content>
 
 <ion-footer no-border>
   <ion-toolbar>
+
+    <ion-segment [(ngModel)]="idioma" (ionChange)="cambiaIdioma()">
+      <ion-segment-button value="en">
+        <ion-label>English</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="es">
+        <ion-label>Español</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+
     <div *ngIf="register == false">
-      <ion-button expand="full"  (click)="onLogin()">Entrar</ion-button>
+      <ion-button expand="full"  (click)="onLogin()">{{ 'PAGES.Login.BTN_INICIO' | translate }}</ion-button>
       <!-- <ion-button expand="full" (click)="changeRegisterState()">No tengo usuario</ion-button> -->
     </div>
   
     <div *ngIf= "register == true">
 
-      <ion-button expand="full"  (click)="onRegister()">Registrar usuario</ion-button>
-      <ion-button expand="full"  (click)="changeRegisterState()">Ya tengo una cuenta</ion-button>
+      <ion-button expand="full" (click)="onRegister()">{{ 'PAGES.Login.BTN_REGISTRO' | translate }}</ion-button>
+      <ion-button expand="full" (click)="changeRegisterState()">{{ 'PAGES.Login.BTN_VOLVER' | translate }}</ion-button>
     </div>
   </ion-toolbar>
 </ion-footer>

@@ -1,0 +1,16 @@
+{
+    "PAGES": {
+        "Login": {
+            "EMAIL": "Email:",
+            "CONTRASEÑA": "Password:",
+            "CREAR_CUENTA": "You do not have an account? Click here to sign up.",
+            "BTN_REGISTRO": "Sign up",
+            "BTN_VOLVER": "I already have an account",
+            "BTN_INICIO": "Sign In",
+            "PLACEHOLDER_EMAIL": "Enter your email here",
+            "PLACEHOLDER_CONTRASEÑA": "Enter your password here",
+            "ALERT_NUEVACUENTA": "Account created successfully",
+            "INFO" : "BeKeen the efficient management app for the assignment of students to companies. Access all the information quickly and easily <br><br>. Developed by: <br><br> · Sergio Girona Soriano <br> · Glòria Sedó Guillem <br> · Álvaro Argüelles Delgado <br> · Francisco Lobo García <br> · José Monleón López"
+          }
+    }
+}

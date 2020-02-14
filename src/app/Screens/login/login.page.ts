@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, NavController } from '@ionic/angular';
+
+// Componentes externos que realizan peticiones
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -16,14 +19,19 @@ export class LoginPage implements OnInit {
   //nombre: string;
   email: string;
   password:string;
-
+  idioma: string = "es";
 
   constructor(private _authService : AuthService, private router: Router, private alertController: AlertController,
-    public toastController: ToastController) { }
+    public toastController: ToastController, public navCtrl: NavController, private _translate: TranslateService) { }
 
   ngOnInit() {
     console.log('\nregister');
     console.log(this.register);
+  }
+
+  cambiaIdioma() {
+    console.log(`Traduzco a: ${this.idioma}`);
+    this._translate.use(this.idioma);
   }
 
 
@@ -51,19 +59,33 @@ export class LoginPage implements OnInit {
   }
 
   async verInfo() {
+    let alertTitle;
+
+    this._translate.get('PAGES.Login.INFO').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+    
     const alert = await this.alertController.create({
       header: 'Información',
-      message:
-        "BeKeen la app de gestión eficiente para la asignación de alumnos a empresas. Accede a toda la información de forma rápida y fácil. <br><br>" + 
-        "Desarrollada por: <br><br> · Sergio Girona Soriano <br> · Glòria Sedó Guillem <br> · Álvaro Argüelles Delgado <br> · Francisco Lobo García <br> · José Monleón López"
+      message: alertTitle
     });
 
     await alert.present();
   }
 
   async presentToast() {
+    let alertTitle;
+
+    this._translate.get('PAGES.Login.ALERT_NUEVACUENTA').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+
     const toast = await this.toastController.create({
-      message: 'Cuenta creada correctamente',
+      message: alertTitle,
       duration: 4000,
       position: "bottom"
     });

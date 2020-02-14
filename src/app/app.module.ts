@@ -19,12 +19,29 @@ import {EmpresasService} from './Services/empresas.services';
 import {ValoracionesService} from './Services/valoraciones.service';
 import {environment} from '../environments/environment';
 
+// Componentes externos que realizan peticiones
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function customTranslateLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule, AngularFireAuthModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+     loader: {
+        provide: TranslateLoader,
+        useFactory: customTranslateLoader,
+        deps: [HttpClient]
+     }
+}),
   ],
   providers: [
     StatusBar,
