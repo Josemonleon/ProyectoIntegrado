@@ -9,6 +9,7 @@ const routes: Routes = [
     loadChildren: () => import('./Screens/login/login.module').then( m => m.LoginPageModule)
   },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  { path: 'home/:idioma', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {
     path: 'alumnos',
     loadChildren: () => import('./Screens/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
@@ -19,6 +20,10 @@ const routes: Routes = [
   },
   {
     path: 'add-alumno',
+    loadChildren: () => import('./Screens/add-alumno/add-alumno.module').then( m => m.AddAlumnoPageModule)
+  },
+  {
+    path: 'add-alumno/:idioma',
     loadChildren: () => import('./Screens/add-alumno/add-alumno.module').then( m => m.AddAlumnoPageModule)
   },
   {

@@ -3,6 +3,7 @@ import { IAlumno, IAlumnoKey } from 'src/app/interfaces';
 import { AlumnosService } from '../../Services/alumnos.service';
 import { NavController } from '@ionic/angular';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alumnos',
@@ -11,14 +12,18 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AlumnosPage implements OnInit {
 
-  constructor(private _service: AlumnosService, private navController: NavController, private afAuth: AngularFireAuth) { }
+  constructor(private _service: AlumnosService, private navController: NavController, private afAuth: AngularFireAuth,
+    private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.idioma = this._activatedRoute.snapshot.paramMap.get('idioma');
+
     this.descargarDatos();
   }
 
   alumnos: IAlumnoKey[] = [];
   nombreAlumno: string;
+  idioma: string; 
 
   descargarDatos(){
 
@@ -35,7 +40,7 @@ export class AlumnosPage implements OnInit {
   }
 
   navAddAlumno(){
-    this.navController.navigateRoot(['/add-alumno']); 
+    this.navController.navigateRoot(['/add-alumno/', this.idioma]); 
   }
 
   navInfoAlumno(key){

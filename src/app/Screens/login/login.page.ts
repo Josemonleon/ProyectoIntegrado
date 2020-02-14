@@ -27,6 +27,7 @@ export class LoginPage implements OnInit {
   ngOnInit() {
     console.log('\nregister');
     console.log(this.register);
+    this._translate.use(this.idioma);
   }
 
   cambiaIdioma() {
@@ -54,7 +55,8 @@ export class LoginPage implements OnInit {
 
     if(user){
       console.log("Sesión iniciada correctamente");
-      this.router.navigateByUrl('/home')
+      const url = `/home/${this.idioma}`;
+      this.router.navigateByUrl(url);
     }
   }
 

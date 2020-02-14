@@ -5,6 +5,7 @@ import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ToastController, NavController } from '@ionic/angular';
 
 import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-alumno',
@@ -14,9 +15,12 @@ import { TranslateService } from '@ngx-translate/core';
 export class AddAlumnoPage implements OnInit {
 
   constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService,
-    private navController : NavController, private _translate: TranslateService) { }
+    private navController : NavController, private _translate: TranslateService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+
+    this.idioma = this._activatedRoute.snapshot.paramMap.get('idioma');
+
     let ref = this._empService.getListaEmpresas();
     ref.once("value", snapshot =>{
       snapshot.forEach(child => {
@@ -49,7 +53,7 @@ export class AddAlumnoPage implements OnInit {
   empresa: string = "Ninguna";
   dni: string = "";
 
-  idioma: string = "en";
+  idioma: string;
 
   cambiaIdioma() {
     console.log(`Traduzco a: ${this.idioma}`);
@@ -57,7 +61,7 @@ export class AddAlumnoPage implements OnInit {
   }
 
   volver(){
-    this.navController.navigateRoot(['/home']); 
+    this.navController.navigateRoot(['/home/', this.idioma]); 
   }
 
   addAlumno(){

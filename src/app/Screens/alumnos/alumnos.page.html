@@ -18,11 +18,11 @@
 <ion-content>
 
   <div align="center">
-    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px; text-decoration: underline;">LISTADO ALUMNOS</p>
+    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px; text-decoration: underline;">{{ 'PAGES.Alumnos.TITULO' | translate }}</p>
   </div>
 
   <ion-item>
-    <ion-input (ionChange)="filtroAlumnos()" clearInput placeholder="Introduce nombre alumno" [(ngModel)]="nombreAlumno"></ion-input>
+    <ion-input (ionChange)="filtroAlumnos()" clearInput placeholder="{{ 'PAGES.Alumnos.PLACEHOLDER' | translate }}" [(ngModel)]="nombreAlumno"></ion-input>
     <ion-icon name="search" slot="end"></ion-icon>
   </ion-item>
 

@@ -28,6 +28,15 @@
             "ALUMNO_AÑADIDO": "Student successfully added",
             "DNI_USADO": "The DNI entered is in use",
             "DATOS_INCORRECTOS": "Error in any of the fields"
+        },
+        "Alumnos":{
+            "TITULO": "LIST OF STUDENTS",
+            "PLACEHOLDER": "Enter student name"
+        },
+        "Tabs":{
+            "ALUMNOS": "Students",
+            "EMPRESAS": "Business"
         }
+
     }
 }

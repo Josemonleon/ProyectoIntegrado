@@ -6,11 +6,25 @@ import { RouterModule } from '@angular/router';
 
 import { HomePage } from './home.page';
 
+// Componentes externos que realizan peticiones
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+// Configuración de traducción
+import { customTranslateLoader } from '../app.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: customTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
     RouterModule.forChild([
       {
         path: '',
@@ -21,7 +35,7 @@ import { HomePage } from './home.page';
         component: HomePage,
         children: [
           {
-            path: "alumnos",
+            path: "alumnos/:idioma",
             loadChildren: () => import('../Screens/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
           },
           {

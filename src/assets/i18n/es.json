@@ -13,7 +13,7 @@
             "INFO" : "BeKeen la app de gestión eficiente para la asignación de alumnos a empresas. Accede a toda la información de forma rápida y fácil. <br><br> Desarrollada por: <br><br> · Sergio Girona Soriano <br> · Glòria Sedó Guillem <br> · Álvaro Argüelles Delgado <br> · Francisco Lobo García <br> · José Monleón López"
         },
         "Add-Alumno":{
-            "TITULO": "NUEVO ALUMNO:",
+            "TITULO": "NUEVO ALUMNO",
             "NOMBRE": "Nombre:",
             "APELLIDOS": "Apellidos:",
             "EMAIL": "Correo:",
@@ -28,6 +28,14 @@
             "ALUMNO_AÑADIDO": "Alumno añadido correctamente",
             "DNI_USADO": "El DNI introducido está en uso",
             "DATOS_INCORRECTOS": "Error en alguno de los campos"
+        },
+        "Alumnos":{
+            "TITULO": "LISTADO ALUMNOS",
+            "PLACEHOLDER": "Introduce nombre alumno"
+        },
+        "Tabs":{
+            "ALUMNOS": "Alumnos",
+            "EMPRESAS": "Empresas"
         }
     }
 }
