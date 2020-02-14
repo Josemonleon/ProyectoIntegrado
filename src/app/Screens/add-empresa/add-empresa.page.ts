@@ -44,7 +44,7 @@ export class AddEmpresaPage implements OnInit {
 
   async presentToastDniIncorrecto() {
     const toast = await this._toastCtrl.create({
-      message: 'Dni erroneo, formato no válido',
+      message: 'Dni erróneo, formato no válido',
       duration: 4000,
       position: "bottom"
     });
@@ -53,7 +53,7 @@ export class AddEmpresaPage implements OnInit {
 
   async presentToastDniLetraIncorrecta() {
     const toast = await this._toastCtrl.create({
-      message: 'Dni erroneo, la letra del NIF no se corresponde',
+      message: 'Dni erróneo, la letra del NIF no se corresponde',
       duration: 4000,
       position: "bottom"
     });
@@ -103,7 +103,6 @@ export class AddEmpresaPage implements OnInit {
     if(nombreOK && localidadOK && contactoOK && NifOK){ 
       return true;
     } else {
-      console.log("Algun error");
       return false;
     }
 

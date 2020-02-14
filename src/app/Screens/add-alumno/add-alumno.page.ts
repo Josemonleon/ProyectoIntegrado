@@ -70,7 +70,7 @@ export class AddAlumnoPage implements OnInit {
         this._service.setAlumno(alumno);
         this.presentToast();
       } else {
-        alert("El DNI introducido esta en uso")
+        alert("El DNI introducido está en uso")
       }
 
     } else {
@@ -128,10 +128,8 @@ export class AddAlumnoPage implements OnInit {
     dniOK = this.nif(); 
 
     if(correoOK && nombreOK && apellidosOK && tutorOK && localidadOK && cursoOK && dniOK){
-      console.log("Todo correcto");
       return true;
     } else {
-      console.log("Algun error");
       return false;
     }
 

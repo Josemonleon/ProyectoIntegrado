@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Services/auth.service';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +18,8 @@ export class LoginPage implements OnInit {
   password:string;
 
 
-  constructor(private _authService : AuthService, private router: Router, private alertController: AlertController) { }
+  constructor(private _authService : AuthService, private router: Router, private alertController: AlertController,
+    public toastController: ToastController) { }
 
   ngOnInit() {
     console.log('\nregister');
@@ -35,13 +36,16 @@ export class LoginPage implements OnInit {
 
   async onRegister(){
     const user = await this._authService.onRegister(this.email, this.password)
+    if(user){
+      this.presentToast();
+    }
   }
 
   async onLogin(){
     const user = await this._authService.onLogin(this.email, this.password)
 
     if(user){
-      console.log("Sesion iniciada correctamente");
+      console.log("Sesión iniciada correctamente");
       this.router.navigateByUrl('/home')
     }
   }
@@ -55,6 +59,15 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Cuenta creada correctamente',
+      duration: 4000,
+      position: "bottom"
+    });
+    toast.present();
   }
 
 }

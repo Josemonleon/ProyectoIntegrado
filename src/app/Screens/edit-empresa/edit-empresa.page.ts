@@ -52,7 +52,7 @@ export class EditEmpresaPage implements OnInit {
       ref2.child(this.key).set(this.empresa); //set es update
       this.presentToast();
     } else {
-      alert("Datos erroneos")
+      alert("Datos erróneos")
     }
   }
   
@@ -73,10 +73,8 @@ export class EditEmpresaPage implements OnInit {
     (regex2.test(this.empresa.Localidad)) ? localidadOK=true : localidadOK=false;
 
     if(nombreOK && localidadOK && contactoOK){
-      console.log("Todo correcto");
       return true;
     } else {
-      console.log("Algun error");
       return false;
     }
 
