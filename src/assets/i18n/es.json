@@ -43,6 +43,18 @@
             "Valoracion": "Valoración",
             "Nombre": "Nombre empresa",
             "Sin_Valorar": "Sin valoraciones"
+        },
+        "Add-Empresa":{
+            "TITULO": "NUEVA EMPRESA",
+            "NOMBRE": "Nombre:",
+            "LOCALIDAD": "Localidad:",
+            "EMAIL": "Correo de contacto:",
+            "BTN_ADD": "AÑADIR EMPRESA",
+            "EMPESA_AÑADIDA": "Empresa añadida correctamente",
+            "NIF_INCORRECTO": "NIF erróneo, formato no válido",
+            "LETRA_INCORRECTA": "NIF erróneo, la letra del NIF no se corresponde",
+            "NIF_USADO": "El NIF introducido está en uso",
+            "DATOS_INCORRECTOS": "Error en alguno de los campos"
         }
     }
 }

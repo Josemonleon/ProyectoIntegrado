@@ -99,7 +99,7 @@ export class AddAlumnoPage implements OnInit {
     )
 
     const toast = await this.toastController.create({
-      message: 'Alumno añadido correctamente',
+      message: alertTitle,
       duration: 4000,
       position: "bottom"
     });

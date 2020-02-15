@@ -15,21 +15,21 @@
 <ion-content>
 
   <div align="center">
-    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px;text-decoration: underline;">NUEVA EMPRESA</p>
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px;text-decoration: underline;">{{ 'PAGES.Add-Empresa.TITULO' | translate }}</p>
   </div>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Nombre</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Add-Empresa.NOMBRE' | translate }}</ion-label>
     <ion-input class="subtexto"[(ngModel)]="nombre"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Localidad</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Add-Empresa.LOCALIDAD' | translate }}</ion-label>
     <ion-input class="subtexto" [(ngModel)]="localidad"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Email de contacto</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Add-Empresa.EMAIL' | translate }}</ion-label>
     <ion-input class="subtexto" [(ngModel)]="contacto"></ion-input>
   </ion-item>
 
@@ -42,6 +42,6 @@
 
 <ion-footer style="margin-top: 10px;" no-border>
   <ion-toolbar>
-    <ion-button expand="block" (click)="insertarEmpresa()">AÑADIR EMPRESA<ion-icon slot="end" name="business"></ion-icon></ion-button>
+    <ion-button expand="block" (click)="insertarEmpresa()">{{ 'PAGES.Add-Empresa.BTN_ADD' | translate }}<ion-icon slot="end" name="business"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -43,6 +43,18 @@
             "Valoracion": "Rating",
             "Nombre": "Company name",
             "Sin_Valorar": "Not rated"
+        },
+        "Add-Empresa":{
+            "TITULO": "NEW COMPANY",
+            "NOMBRE": "Name:",
+            "LOCALIDAD": "Location:",
+            "EMAIL": "Email contact:",
+            "BTN_ADD": "ADD COMPANY",
+            "EMPESA_AÑADIDA": "Company successfully added",
+            "NIF_INCORRECTO": "NIF wrong, invalid format",
+            "LETRA_INCORRECTA": "NIF wrong, the letter of the NIF does not correspond",
+            "NIF_USADO": "The NIF entered is in use",
+            "DATOS_INCORRECTOS": "Error in any of the fields"
         }
 
     }
