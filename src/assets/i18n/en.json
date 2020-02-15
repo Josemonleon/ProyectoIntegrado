@@ -70,6 +70,20 @@
             "CANCELAR": "Cancel",
             "ELIMINAR": "Delete",
             "CONFIRMACION": "Confirmation"
+        },
+        "Edit-Alumno":{
+            "TITULO": "STUDENT INFORMATION",
+            "NOMBRE": "Name:",
+            "APELLIDOS": "Surname:",
+            "EMAIL": "Email:",
+            "LOCALIDAD": "Location:",
+            "TUTOR": "Tutor:",
+            "CURSO": "Course:",
+            "EMPRESA": "Assigned company",
+            "NINGUNA": "None",
+            "BTN_GUARDAR": "SAVE CHANGES",
+            "DATOS_GUARDADOS": "Changes saved successfully",
+            "DATOS_INCORRECTOS": "Error in any of the fields"
         }
 
     }

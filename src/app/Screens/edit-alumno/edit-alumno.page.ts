@@ -4,6 +4,7 @@ import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { ActivatedRoute } from '@angular/router';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-edit-alumno',
@@ -13,7 +14,7 @@ import { ToastController } from '@ionic/angular';
 export class EditAlumnoPage implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService,
-    private _empService: EmpresasService, private toastController: ToastController) { }
+    private _empService: EmpresasService, private toastController: ToastController, private _translate: TranslateService) { }
 
   key: string;
   item: IAlumno = {
@@ -56,13 +57,36 @@ export class EditAlumnoPage implements OnInit {
       ref2.child(this.key).set(this.item);
       this.presentToast();
     } else {
-      alert("Datos erróneos")
+      this.datosErroneos();
     }
   }
 
-  async presentToast() {
+  async datosErroneos() {
+    let mensaje;
+    this._translate.get('PAGES.Edit-Alumno.DATOS_INCORRECTOS').subscribe(
+      value => {
+        mensaje = value;
+      }
+    )
+
     const toast = await this.toastController.create({
-      message: 'Datos guardados',
+      message: mensaje,
+      duration: 4000,
+      position: "bottom"
+    });
+    toast.present();
+  }
+
+  async presentToast() {
+    let mensaje;
+    this._translate.get('PAGES.Edit-Alumno.DATOS_GUARDADOS').subscribe(
+      value => {
+        mensaje = value;
+      }
+    )
+
+    const toast = await this.toastController.create({
+      message: mensaje,
       duration: 4000,
       position: "bottom"
     });

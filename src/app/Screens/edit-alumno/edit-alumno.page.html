@@ -15,7 +15,7 @@
 <ion-content>
 
   <div align="center">
-    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN ALUMNO</p>
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">{{ 'PAGES.Edit-Alumno.TITULO' | translate }}</p>
   </div>
 
   <ion-item>
@@ -24,39 +24,39 @@
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Nombre:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.NOMBRE' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Nombre"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Apellidos:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.APELLIDOS' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Apellidos"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Email:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.EMAIL' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Email"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Localidad:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.LOCALIDAD' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Localidad"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Tutor:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.TUTOR' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Tutor"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label class="texto" position="stacked">Curso:</ion-label>
+    <ion-label class="texto" position="stacked">{{ 'PAGES.Edit-Alumno.CURSO' | translate }}</ion-label>
     <ion-input class="subtexto" clearInput [(ngModel)]="item.Curso"></ion-input>
   </ion-item>
 
   <ion-item>
-    <ion-label>Empresa asignada</ion-label>
+    <ion-label>{{ 'PAGES.Edit-Alumno.EMPRESA' | translate }}</ion-label>
     <ion-select [(ngModel)]="item.Empresa">
-      <ion-select-option value="Ninguna">Ninguna</ion-select-option>
+      <ion-select-option value="Ninguna">{{ 'PAGES.Edit-Alumno.NINGUNA' | translate }}</ion-select-option>
       <ion-select-option *ngFor="let item2 of empresas" value="{{item2.key}}">{{item2.Nombre}}</ion-select-option>
     </ion-select>
   </ion-item>
@@ -65,6 +65,6 @@
 
 <ion-footer class="texto" style="margin-top: 10px;" no-border>
   <ion-toolbar>
-    <ion-button (click)="guardarCambios()" expand="full">GUARDAR CAMBIOS</ion-button>
+    <ion-button (click)="guardarCambios()" expand="full">{{ 'PAGES.Edit-Alumno.BTN_GUARDAR' | translate }}</ion-button>
   </ion-toolbar>
 </ion-footer>
