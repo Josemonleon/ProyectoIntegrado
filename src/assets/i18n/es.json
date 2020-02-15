@@ -55,6 +55,21 @@
             "LETRA_INCORRECTA": "NIF erróneo, la letra del NIF no se corresponde",
             "NIF_USADO": "El NIF introducido está en uso",
             "DATOS_INCORRECTOS": "Error en alguno de los campos"
+        },
+        "Info-Alumno":{
+            "TITULO": "INFORMACIÓN ALUMNO",
+            "NOMBRE": "Nombre",
+            "EMAIL": "Correo",
+            "LOCALIDAD": "Localidad",
+            "TUTOR_CURSO": "Tutor y Curso",
+            "EMPRESA": "Empresa asignada",
+            "BTN_EDITAR": "EDITAR INFORMACIÓN ALUMNO",
+            "BTN_ELIMINAR": "ELIMINAR ALUMNO",
+            "SIN_EMPRESA": "Ninguna",
+            "ALERT_ELIMINAR": "¿Está seguro de que quiere eliminar?",
+            "CANCELAR": "Cancelar",
+            "ELIMINAR": "Eliminar",
+            "CONFIRMACION": "Confirmación"
         }
     }
 }

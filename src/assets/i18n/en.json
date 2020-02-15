@@ -55,6 +55,21 @@
             "LETRA_INCORRECTA": "NIF wrong, the letter of the NIF does not correspond",
             "NIF_USADO": "The NIF entered is in use",
             "DATOS_INCORRECTOS": "Error in any of the fields"
+        },
+        "Info-Alumno":{
+            "TITULO": "STUDENT INFORMATION",
+            "NOMBRE": "Name",
+            "EMAIL": "Email",
+            "LOCALIDAD": "Location",
+            "TUTOR_CURSO": "Tutor & Course",
+            "EMPRESA": "Assigned company",
+            "BTN_EDITAR": "EDIT STUDENT INFORMATION",
+            "BTN_ELIMINAR": "DELETE STUDENT",
+            "SIN_EMPRESA": "None",
+            "ALERT_ELIMINAR": "Are you sure you want to delete?",
+            "CANCELAR": "Cancel",
+            "ELIMINAR": "Delete",
+            "CONFIRMACION": "Confirmation"
         }
 
     }

@@ -4,6 +4,7 @@ import { IAlumno } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { NavController, AlertController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-info-alumno',
@@ -13,7 +14,7 @@ import { NavController, AlertController } from '@ionic/angular';
 export class InfoAlumnoPage implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService, private _empService:EmpresasService,
-    private router: Router, private alertController: AlertController) { }
+    private router: Router, private alertController: AlertController, private _translate: TranslateService) { }
 
   async ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get('key');
@@ -75,15 +76,27 @@ export class InfoAlumnoPage implements OnInit {
   }
 
   async confirmacion() {
+    let alertEliminar;
+    this._translate.get('PAGES.Info-Alumno.ALERT_ELIMINAR').subscribe( value => { alertEliminar = value; } )
+
+    let cancelar;
+    this._translate.get('PAGES.Info-Alumno.CANCELAR').subscribe( value => { cancelar = value; } )
+
+    let eliminar;
+    this._translate.get('PAGES.Info-Alumno.ELIMINAR').subscribe( value => { eliminar = value; } )
+
+    let confirmacion;
+    this._translate.get('PAGES.Info-Alumno.CONFIRMACION').subscribe( value => { confirmacion = value; } )
+
     const alert = await this.alertController.create({
-      header: 'Confirmación',
-      message: '¿Está seguro de que quiere eliminar?',
+      header: confirmacion,
+      message: alertEliminar,
       buttons: [
         {
-          text: 'Cancelar',
+          text: cancelar,
           role: 'cancel',
         }, {
-          text: 'Eliminar',
+          text: eliminar,
           handler: () => {
             console.log('Confirm Okay');
             this.elimiarAlumno();
