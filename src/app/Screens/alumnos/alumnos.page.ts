@@ -16,14 +16,11 @@ export class AlumnosPage implements OnInit {
     private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.idioma = this._activatedRoute.snapshot.paramMap.get('idioma');
-
     this.descargarDatos();
   }
 
   alumnos: IAlumnoKey[] = [];
   nombreAlumno: string;
-  idioma: string; 
 
   descargarDatos(){
 
@@ -40,7 +37,7 @@ export class AlumnosPage implements OnInit {
   }
 
   navAddAlumno(){
-    this.navController.navigateRoot(['/add-alumno/', this.idioma]); 
+    this.navController.navigateRoot(['/add-alumno']); 
   }
 
   navInfoAlumno(key){

@@ -19,8 +19,6 @@ export class AddAlumnoPage implements OnInit {
 
   ngOnInit() {
 
-    this.idioma = this._activatedRoute.snapshot.paramMap.get('idioma');
-
     let ref = this._empService.getListaEmpresas();
     ref.once("value", snapshot =>{
       snapshot.forEach(child => {
@@ -38,7 +36,6 @@ export class AddAlumnoPage implements OnInit {
       })
     })
 
-    this.cambiaIdioma();
   }
 
   empresas: IEmpresaKey[] = [];
@@ -53,15 +50,8 @@ export class AddAlumnoPage implements OnInit {
   empresa: string = "Ninguna";
   dni: string = "";
 
-  idioma: string;
-
-  cambiaIdioma() {
-    console.log(`Traduzco a: ${this.idioma}`);
-    this._translate.use(this.idioma);
-  }
-
   volver(){
-    this.navController.navigateRoot(['/home/', this.idioma]); 
+    this.navController.navigateRoot(['/home']); 
   }
 
   addAlumno(){

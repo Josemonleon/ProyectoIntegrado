@@ -55,7 +55,7 @@ export class LoginPage implements OnInit {
 
     if(user){
       console.log("Sesión iniciada correctamente");
-      const url = `/home/${this.idioma}`;
+      const url = `/home`;
       this.router.navigateByUrl(url);
     }
   }

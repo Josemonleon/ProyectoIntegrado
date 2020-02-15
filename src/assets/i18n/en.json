@@ -35,7 +35,14 @@
         },
         "Tabs":{
             "ALUMNOS": "Students",
-            "EMPRESAS": "Business"
+            "EMPRESAS": "Companies"
+        },
+        "Empresas":{
+            "TITULO": "LIST OF COMPANIES",
+            "PLACEHOLDER": "Company name",
+            "Valoracion": "Rating",
+            "Nombre": "Company name",
+            "Sin_Valorar": "Not rated"
         }
 
     }

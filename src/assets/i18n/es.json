@@ -36,6 +36,13 @@
         "Tabs":{
             "ALUMNOS": "Alumnos",
             "EMPRESAS": "Empresas"
+        },
+        "Empresas":{
+            "TITULO": "LISTA EMPRESAS",
+            "PLACEHOLDER": "Nombre empresa",
+            "Valoracion": "Valoración",
+            "Nombre": "Nombre empresa",
+            "Sin_Valorar": "Sin valoraciones"
         }
     }
 }

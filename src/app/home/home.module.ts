@@ -35,7 +35,7 @@ import { customTranslateLoader } from '../app.module';
         component: HomePage,
         children: [
           {
-            path: "alumnos/:idioma",
+            path: "alumnos",
             loadChildren: () => import('../Screens/alumnos/alumnos.module').then( m => m.AlumnosPageModule)
           },
           {

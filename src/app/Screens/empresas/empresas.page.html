@@ -18,13 +18,13 @@
 <ion-content>
 
   <div align="center">
-    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px;text-decoration: underline;">LISTADO EMPRESAS</p>
+    <p style="font-size: 18px;font-weight: bold;margin-bottom: 5px;margin-top: 12px;text-decoration: underline;">{{ 'PAGES.Empresas.TITULO' | translate }}</p>
   </div>
 
   <ion-row>
     <ion-col size="7">
       <ion-item>
-        <ion-input  [(ngModel)]="nombreEmpresa" clearInput placeholder="Nombre empresa"></ion-input>
+        <ion-input  [(ngModel)]="nombreEmpresa" clearInput placeholder="{{ 'PAGES.Empresas.PLACEHOLDER' | translate }}"></ion-input>
         <ion-icon (click)="filtroNombre()" name="search" slot="end" ></ion-icon>
       </ion-item>
     </ion-col>
@@ -44,8 +44,8 @@
   </ion-row>
 
   <ion-item>
-    <ion-label style="font-weight: bold">Nombre empresa</ion-label>
-    <ion-label style="text-align: right; margin-right: 4px; font-weight: bold">Valoración</ion-label>
+    <ion-label style="font-weight: bold">{{ 'PAGES.Empresas.Nombre' | translate }}</ion-label>
+    <ion-label style="text-align: right; margin-right: 4px; font-weight: bold">{{ 'PAGES.Empresas.Valoracion' | translate }}</ion-label>
     <ion-icon *ngIf="mayorMenor == true" (click)="cambiarOrden()" name="arrow-up" slot="end"></ion-icon>
     <ion-icon *ngIf="mayorMenor == false" (click)="cambiarOrden()" name="arrow-down" slot="end"></ion-icon>
   </ion-item>
@@ -56,8 +56,7 @@
       <ion-label (click)="navInfoEmpresa(item.key)">{{item.Nombre}}</ion-label>
       <ion-label *ngIf="item.Valoracion != 0" (click)="verInfo(item.key)" style="text-align: right;">
         {{item.Valoracion}}☆</ion-label>
-      <ion-label *ngIf="item.Valoracion == 0" (click)="verInfo(item.key)" style="text-align: right;">Sin valoraciones
-      </ion-label>
+      <ion-label *ngIf="item.Valoracion == 0" (click)="verInfo(item.key)" style="text-align: right;">{{ 'PAGES.Empresas.Sin_Valorar' | translate }}</ion-label>
     </ion-item>
   
   </ion-list>
