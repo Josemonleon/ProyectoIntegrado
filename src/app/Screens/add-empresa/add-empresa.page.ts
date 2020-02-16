@@ -103,7 +103,8 @@ export class AddEmpresaPage implements OnInit {
       //Si el dni no esta en uso
       if (!this.existeDniEmpresa()) {
         this._service.setEmpresa(empresa);
-        this.presentToast();  //Se llama para que muestre el mensaje de que ha sido insertado un producto.
+        this.presentToast();
+        this.volver();
       } else {
         this._translate.get('PAGES.Add-Empresa.NIF_USADO').subscribe(
           value => {

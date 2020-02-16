@@ -73,6 +73,7 @@ export class AddAlumnoPage implements OnInit {
       if(!this.existeDni()){ //Si el dni no esta en uso
         this._service.setAlumno(alumno);
         this.presentToast();
+        this.volver();
       } else {
         this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe(
           value => {
