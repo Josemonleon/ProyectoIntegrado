@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { IEmpresaKey, IEmpresa} from 'src/app/interfaces';
 import {Router} from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-edit-empresa',
@@ -22,7 +24,8 @@ export class EditEmpresaPage implements OnInit {
   }
   bool: boolean = true;
 
-  constructor(private _toastCtrl: ToastController, private _service: EmpresasService, private _activatedRoute: ActivatedRoute, private route: Router) { }
+  constructor(private _toastCtrl: ToastController, private _service: EmpresasService, private _activatedRoute: ActivatedRoute, 
+    private route: Router, private _translate: TranslateService, private alertController: AlertController) { }
 
   ngOnInit() {
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -37,8 +40,12 @@ export class EditEmpresaPage implements OnInit {
   }
 
   async presentToast() {  //Muestra el mensaje 'message' en el momento de ser creado. Se utiliza siendo llamado.
+
+    let mensaje;
+    this._translate.get('PAGES.Edit-Empresa.CAMBIOS_GUARDADOS').subscribe( value => { mensaje = value; } )
+
     const toast = await this._toastCtrl.create({
-      message: 'Empresa modificada correctamente',
+      message: mensaje,
       duration: 1000,
       position: "bottom"
     });
@@ -52,8 +59,22 @@ export class EditEmpresaPage implements OnInit {
       ref2.child(this.key).set(this.empresa); //set es update
       this.presentToast();
     } else {
-      alert("Datos erróneos")
+      this.datosErroneos();
     }
+  }
+
+  async datosErroneos() {
+
+    let mensaje;
+    this._translate.get('PAGES.Edit-Empresa.DATOS_INCORRECTOS').subscribe( value => { mensaje = value; } )
+
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
   
   esCorrecto(){

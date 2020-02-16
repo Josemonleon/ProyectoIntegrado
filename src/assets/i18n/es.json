@@ -109,6 +109,15 @@
             "CANCELAR": "Cancelar",
             "ELIMINAR": "Eliminar",
             "CONFIRMACION": "Confirmación"
+        },
+        "Edit-Empresa":{
+            "TITULO": "EDITAR EMPRESA",
+            "NOMBRE": "Nombre:",
+            "LOCALIDAD": "Localidad:",
+            "EMAIL": "Correo de contacto:",
+            "BTN_ADD": "GUARDAR CAMBIOS",
+            "CAMBIOS_GUARDADOS": "Cambios guardados correctamente",
+            "DATOS_INCORRECTOS": "Error en alguno de los campos"
         }
     }
 }
