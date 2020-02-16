@@ -84,6 +84,9 @@
             "BTN_GUARDAR": "SAVE CHANGES",
             "DATOS_GUARDADOS": "Changes saved successfully",
             "DATOS_INCORRECTOS": "Error in any of the fields"
+        },
+        "Valoraciones": {
+            "TITULO": "RATINGS"
         }
 
     }

@@ -54,9 +54,9 @@
   
     <ion-item *ngFor="let item of empresas">
       <ion-label (click)="navInfoEmpresa(item.key)">{{item.Nombre}}</ion-label>
-      <ion-label *ngIf="item.Valoracion != 0" (click)="verInfo(item.key)" style="text-align: right;">
+      <ion-label *ngIf="item.Valoracion != 0" (click)="navInfoEmpresa(item.key)" style="text-align: right;">
         {{item.Valoracion}}☆</ion-label>
-      <ion-label *ngIf="item.Valoracion == 0" (click)="verInfo(item.key)" style="text-align: right;">{{ 'PAGES.Empresas.Sin_Valorar' | translate }}</ion-label>
+      <ion-label *ngIf="item.Valoracion == 0" (click)="navInfoEmpresa(item.key)" style="text-align: right;">{{ 'PAGES.Empresas.Sin_Valorar' | translate }}</ion-label>
     </ion-item>
   
   </ion-list>
