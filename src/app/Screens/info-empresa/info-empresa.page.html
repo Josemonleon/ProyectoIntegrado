@@ -15,14 +15,14 @@
 <ion-content *ngFor="let item of empresas">
 
   <div align="center">
-    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">INFORMACIÓN EMPRESA</p>
+    <p style="font-size: 26px;font-weight: bold;margin-bottom: 8px;margin-top: 15px; text-decoration: underline;">{{ 'PAGES.Info-Empresa.TITULO' | translate }}</p>
   </div>
 
   <ion-row style="height: 95px;">
     <ion-col size="6">
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>Nombre</ion-card-subtitle>
+          <ion-card-subtitle>{{ 'PAGES.Info-Empresa.NOMBRE' | translate }}</ion-card-subtitle>
           <ion-card-title>{{item.Nombre}}</ion-card-title>
         </ion-card-header>
       </ion-card>
@@ -32,7 +32,7 @@
   
       <ion-card>
         <ion-card-header>
-          <ion-card-subtitle>Localidad</ion-card-subtitle>
+          <ion-card-subtitle>{{ 'PAGES.Info-Empresa.LOCALIDAD' | translate }}</ion-card-subtitle>
           <ion-card-title>{{item.Localidad}}</ion-card-title>
         </ion-card-header>
       </ion-card>
@@ -41,15 +41,15 @@
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Contacto</ion-card-subtitle>
+      <ion-card-subtitle>{{ 'PAGES.Info-Empresa.EMAIL' | translate }}</ion-card-subtitle>
       <ion-card-title>{{item.Contacto}}</ion-card-title>
     </ion-card-header>
   </ion-card>
 
   <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Valoración</ion-card-subtitle>
-      <ion-card-title *ngIf = "item.Valoracion == 0">Esta empresa aun no ha sido valorada</ion-card-title>
+      <ion-card-subtitle>{{ 'PAGES.Info-Empresa.VALORACION' | translate }}</ion-card-subtitle>
+      <ion-card-title *ngIf = "item.Valoracion == 0">{{ 'PAGES.Info-Empresa.SIN_VALORAR' | translate }}</ion-card-title>
       <!-- Valoracion 1 | 1 estrella --> 
       <ion-card-title *ngIf = "item.Valoracion >= 1 && item.Valoracion <= 1.25">
         <ion-icon name="star"></ion-icon>
@@ -133,14 +133,14 @@
       </ion-card-title>
     </ion-card-header>
 <!--<ion-button expand="full" routerLink="/ver-valoraciones/{{item.key}}">VER VALORACIONES</ion-button>-->
-    <ion-button expand="full" (click)="verValoraciones(item.key)">VER VALORACIONES</ion-button>
+    <ion-button expand="full" (click)="verValoraciones(item.key)">{{ 'PAGES.Info-Empresa.BTN_VALORACIONES' | translate }}</ion-button>
   </ion-card>
 
     <ion-card>
     <ion-card-header>
-      <ion-card-subtitle>Añadir valoración:</ion-card-subtitle>
+      <ion-card-subtitle>{{ 'PAGES.Info-Empresa.AÑADIR_VAL_TXT' | translate }}</ion-card-subtitle>
       <ion-item>
-        <ion-label>Selecciona valoracion</ion-label>
+        <ion-label>{{ 'PAGES.Info-Empresa.ELEGIR_VAL' | translate }}</ion-label>
         <ion-select [(ngModel)]="rating">
           <ion-select-option value="1">1☆</ion-select-option>
           <ion-select-option value="2">2☆</ion-select-option>
@@ -149,9 +149,9 @@
           <ion-select-option value="5">5☆</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-textarea [(ngModel)]="comentario" placeholder="Introduce un comentario"></ion-textarea>
+      <ion-textarea [(ngModel)]="comentario" placeholder="{{ 'PAGES.Info-Empresa.COMENTARIO' | translate }}"></ion-textarea>
     </ion-card-header>
-    <ion-button expand="full" (click)="addValoracion()">AÑADIR VALORACIÓN</ion-button>
+    <ion-button expand="full" (click)="addValoracion()">{{ 'PAGES.Info-Empresa.BTN_ADD_VAL' | translate }}</ion-button>
   </ion-card>
 
 </ion-content>
@@ -161,17 +161,17 @@
     
     <ion-row>
       <ion-col size="12" style="padding-top: 0px; padding-bottom: 0px;">
-        <ion-button expand="full" (click)="alumnosAsignados()">ALUMNOS ASIGNADOS<ion-icon slot="end" name="people"></ion-icon></ion-button>
+        <ion-button expand="full" (click)="alumnosAsignados()">{{ 'PAGES.Info-Empresa.BTN_ALUMNOS' | translate }}<ion-icon slot="end" name="people"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col size="6" style="padding-top: 0px; padding-bottom: 0px;">
-        <ion-button expand="full" (click)="editarEmpresa()">EDITAR<ion-icon slot="end" name="business"></ion-icon></ion-button>
+        <ion-button expand="full" (click)="editarEmpresa()">{{ 'PAGES.Info-Empresa.BTN_EDITAR' | translate }}<ion-icon slot="end" name="business"></ion-icon></ion-button>
       </ion-col>
     
       <ion-col size="6" style="padding-top: 0px; padding-bottom: 0px;">
-        <ion-button expand="full" (click)="confirmacion()" color="danger">ELIMINAR<ion-icon slot="end" name="trash"></ion-icon></ion-button>
+        <ion-button expand="full" (click)="confirmacion()" color="danger">{{ 'PAGES.Info-Empresa.ELIMINAR' | translate }}<ion-icon slot="end" name="trash"></ion-icon></ion-button>
       </ion-col>
     </ion-row>
     

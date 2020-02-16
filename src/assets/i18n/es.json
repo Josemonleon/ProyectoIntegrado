@@ -87,6 +87,28 @@
         },
         "Valoraciones": {
             "TITULO": "VALORACIONES"
+        },
+        "Info-Empresa":{
+            "TITULO": "INFORMACIÓN EMPRESA",
+            "NOMBRE": "Nombre",
+            "EMAIL": "Correo de contacto",
+            "LOCALIDAD": "Localidad",
+            "VALORACION": "Valoración",
+            "SIN_VALORAR": "Esta empresa aun no ha sido valorada",
+            "BTN_VALORACIONES": "VER VALORACIONES",
+            "AÑADIR_VAL_TXT": "Añadir valoración",
+            "ELEGIR_VAL": "Selecciona valoración",
+            "COMENTARIO": "Introduce un comentario",
+            "BTN_ADD_VAL": "AÑADIR VALORACIÓN",
+            "ALERT_ERROR": "Añade una valoración",
+            "VALORACION_AÑADIDA": "Valoración añadida correctamente",
+            "BTN_ALUMNOS": "ALUMNOS ASIGNADOS",
+            "BTN_EDITAR": "EDITAR",
+            "BTN_ELIMINAR": "ELIMINAR",
+            "ALERT_ELIMINAR": "¿Está seguro de que quiere eliminar?",
+            "CANCELAR": "Cancelar",
+            "ELIMINAR": "Eliminar",
+            "CONFIRMACION": "Confirmación"
         }
     }
 }

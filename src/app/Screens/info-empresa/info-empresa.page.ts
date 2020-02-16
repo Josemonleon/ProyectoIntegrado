@@ -7,6 +7,7 @@ import { Location } from '@angular/common';
 import { ValoracionesService } from 'src/app/Services/valoraciones.service';
 import { NavController, AlertController } from '@ionic/angular';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
+import { TranslateService } from '@ngx-translate/core';
 
 
 @Component({
@@ -24,7 +25,8 @@ export class InfoEmpresaPage implements OnInit {
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
     private router: Router, private location: Location, private _valService: ValoracionesService,
-    private navController: NavController, private _alService: AlumnosService, private alertController: AlertController) { }
+    private navController: NavController, private _alService: AlumnosService, private alertController: AlertController,
+    private _translate: TranslateService) { }
 
   ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -70,31 +72,66 @@ export class InfoEmpresaPage implements OnInit {
     this.navController.navigateRoot(['/alumnos-asignados/', this.key]); 
   }
 
-  addValoracion(){
-    //Añado la valoracion a la lista de valoraciones
-    let valoracion: IValoracion = 
-    {
-      "Comentario": this.comentario,
-      "Empresa": this.key,
-      "Valoracion": this.rating
+  addValoracion() {
+
+    if (this.rating >= 1 && this.rating <= 5) {
+
+      //Añado la valoracion a la lista de valoraciones
+      let valoracion: IValoracion =
+      {
+        "Comentario": this.comentario,
+        "Empresa": this.key,
+        "Valoracion": this.rating
+      }
+
+      this._valService.setValoracion(valoracion);
+
+      //Calculo la nueva valoracion de la empresa
+      if (this.empresas[0].Valoracion == 0) {
+        this.empresas[0].Valoracion = +this.rating;
+      }
+      else {
+        let actual: number = this.empresas[0].Valoracion;
+        this.empresas[0].Valoracion = (+actual + +this.rating) / 2;
+      }
+
+      //Asigno la nueva valoracion
+      let ref2 = this._service.getListaEmpresas();
+      ref2.child(this.key).set(this.empresas[0]);
+
+      this.valoracionAñadida();
+
+    } else {
+      this.errorRating();
     }
 
-    this._valService.setValoracion(valoracion);
+  }
 
-    //Calculo la nueva valoracion de la empresa
-    if(this.empresas[0].Valoracion == 0){
-      this.empresas[0].Valoracion = +this.rating;
-    }
-    else 
-    {
-      let actual : number = this.empresas[0].Valoracion;
-      this.empresas[0].Valoracion = (+actual + +this.rating)/2;
-    }
-    let ref2 = this._service.getListaEmpresas();
-    ref2.child(this.key).set(this.empresas[0]);
-    
-    //Recargo la pantalla
-    console.log("Valoracion añadida correctamente")
+  async errorRating() {
+
+    let mensaje;
+    this._translate.get('PAGES.Info-Empresa.ALERT_ERROR').subscribe( value => { mensaje = value; } )
+
+    const alert = await this.alertController.create({
+      header: 'Error',
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
+  }
+
+  async valoracionAñadida() {
+
+    let mensaje;
+    this._translate.get('PAGES.Info-Empresa.VALORACION_AÑADIDA').subscribe( value => { mensaje = value; } )
+
+    const alert = await this.alertController.create({
+      message: mensaje,
+      buttons: ['OK']
+    });
+
+    await alert.present();
   }
 
   eliminarEmpresa(){
@@ -150,15 +187,28 @@ export class InfoEmpresaPage implements OnInit {
   }
 
   async confirmacion() {
+
+    let alertEliminar;
+    this._translate.get('PAGES.Info-Empresa.ALERT_ELIMINAR').subscribe( value => { alertEliminar = value; } )
+
+    let cancelar;
+    this._translate.get('PAGES.Info-Empresa.CANCELAR').subscribe( value => { cancelar = value; } )
+
+    let eliminar;
+    this._translate.get('PAGES.Info-Empresa.ELIMINAR').subscribe( value => { eliminar = value; } )
+
+    let confirmacion;
+    this._translate.get('PAGES.Info-Empresa.CONFIRMACION').subscribe( value => { confirmacion = value; } )
+
     const alert = await this.alertController.create({
-      header: 'Confirmación',
-      message: '¿Está seguro de que quiere eliminar?',
+      header: confirmacion,
+      message: alertEliminar,
       buttons: [
         {
-          text: 'Cancelar',
+          text: cancelar,
           role: 'cancel',
         }, {
-          text: 'Eliminar',
+          text: eliminar,
           handler: () => {
             console.log('Confirm Okay');
             this.desasignarEmpresa();

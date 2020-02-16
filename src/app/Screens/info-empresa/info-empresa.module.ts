@@ -8,12 +8,26 @@ import { InfoEmpresaPageRoutingModule } from './info-empresa-routing.module';
 
 import { InfoEmpresaPage } from './info-empresa.page';
 
+// Componentes externos que realizan peticiones
+import { HttpClient } from '@angular/common/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+
+// Configuración de traducción
+import { customTranslateLoader } from '../../app.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InfoEmpresaPageRoutingModule
+    InfoEmpresaPageRoutingModule,
+    TranslateModule.forChild({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: customTranslateLoader,
+        deps: [HttpClient]
+      }
+    }),
   ],
   declarations: [InfoEmpresaPage]
 })

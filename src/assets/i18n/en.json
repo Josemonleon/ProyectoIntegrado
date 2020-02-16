@@ -87,6 +87,28 @@
         },
         "Valoraciones": {
             "TITULO": "RATINGS"
+        },
+        "Info-Empresa":{
+            "TITULO": "COMPANY INFORMATION",
+            "NOMBRE": "Name",
+            "EMAIL": "Email contact",
+            "LOCALIDAD": "Location",
+            "VALORACION": "Rating",
+            "SIN_VALORAR": "This company has not yet been valued.",
+            "BTN_VALORACIONES": "RATINGS",
+            "AÑADIR_VAL_TXT": "Add rating",
+            "ELEGIR_VAL": "Select rating",
+            "COMENTARIO": "Enter a comment",
+            "BTN_ADD_VAL": "ADD RATING",
+            "ALERT_ERROR": "Add a rating",
+            "VALORACION_AÑADIDA": "Rating successfully added",
+            "BTN_ALUMNOS": "ASSIGNED STUDENTS",
+            "BTN_EDITAR": "EDIT",
+            "BTN_ELIMINAR": "DELETE",
+            "ALERT_ELIMINAR": "Are you sure you want to delete?",
+            "CANCELAR": "Cancel",
+            "ELIMINAR": "Delete",
+            "CONFIRMACION": "Confirmation"
         }
 
     }
