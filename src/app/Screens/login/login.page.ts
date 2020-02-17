@@ -57,7 +57,26 @@ export class LoginPage implements OnInit {
       console.log("Sesión iniciada correctamente");
       const url = `/home`;
       this.router.navigateByUrl(url);
+    } else {
+      this.errorDatos();
     }
+  }
+
+  async errorDatos() {
+    let alertTitle;
+
+    this._translate.get('PAGES.Login.ERROR').subscribe(
+      value => {
+        alertTitle = value;
+      }
+    )
+    
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
+    });
+
+    await alert.present();
   }
 
   async verInfo() {
@@ -70,7 +89,7 @@ export class LoginPage implements OnInit {
     )
     
     const alert = await this.alertController.create({
-      header: 'Información',
+      header: 'Info',
       message: alertTitle
     });
 
