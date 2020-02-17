@@ -62,6 +62,16 @@ export class LoginPage implements OnInit {
     }
   }
 
+  async usuarioInvitado(){
+    const user = await this._authService.onLogin("invitadoBeKeen@gmail.com", "123456")
+
+    if(user){
+      console.log("Sesión iniciada correctamente");
+      const url = `/home`;
+      this.router.navigateByUrl(url);
+    }
+  }
+
   async errorDatos() {
     let alertTitle;
 
@@ -91,6 +101,21 @@ export class LoginPage implements OnInit {
     const alert = await this.alertController.create({
       header: 'Info',
       message: alertTitle
+    });
+
+    await alert.present();
+  }
+
+  async infoInvitado() {
+    let titulo;
+    this._translate.get('PAGES.Login.INVITADO_TITULO').subscribe( value => {titulo = value; })
+
+    let mensaje;
+    this._translate.get('PAGES.Login.INFO_INVITADO').subscribe( value => {mensaje = value; })
+    
+    const alert = await this.alertController.create({
+      header: titulo,
+      message: mensaje
     });
 
     await alert.present();

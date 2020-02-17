@@ -8,6 +8,7 @@ import { ValoracionesService } from 'src/app/Services/valoraciones.service';
 import { NavController, AlertController } from '@ionic/angular';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 
 @Component({
@@ -22,11 +23,12 @@ export class InfoEmpresaPage implements OnInit {
   empresas: IEmpresaKey[] = [];
   comentario : string = "";
   rating : number;
+  email: string;
 
   constructor(private _service: EmpresasService, private _activatedRoute: ActivatedRoute,
     private router: Router, private location: Location, private _valService: ValoracionesService,
     private navController: NavController, private _alService: AlumnosService, private alertController: AlertController,
-    private _translate: TranslateService) { }
+    private _translate: TranslateService, private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get("key");
@@ -36,7 +38,7 @@ export class InfoEmpresaPage implements OnInit {
   ionViewWillEnter(){
     this.key = this._activatedRoute.snapshot.paramMap.get("key");
     this.editar = JSON.parse(this._activatedRoute.snapshot.paramMap.get("bool"));
-
+    this.email = this.afAuth.auth.currentUser.email;
     this.descargarDatos();
   }
 

@@ -16,11 +16,14 @@ export class AlumnosPage implements OnInit {
     private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.email = this.afAuth.auth.currentUser.email;
+    console.log(this.email)
     this.descargarDatos();
   }
 
   alumnos: IAlumnoKey[] = [];
   nombreAlumno: string;
+  email: string;
 
   descargarDatos(){
 

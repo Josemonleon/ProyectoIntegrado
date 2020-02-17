@@ -21,6 +21,7 @@ export class EmpresasPage implements OnInit {
 
 
   ngOnInit() {
+    this.email = this.afAuth.auth.currentUser.email;
     this.descargarDatos();
   }
 
@@ -28,6 +29,7 @@ export class EmpresasPage implements OnInit {
   rating : number;
   nombreEmpresa: string;
   mayorMenor: boolean = true;
+  email: string;
 
   async descargarDatos(){
     this.empresas = [];

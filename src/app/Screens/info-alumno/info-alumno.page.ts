@@ -5,6 +5,7 @@ import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
 import { NavController, AlertController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-info-alumno',
@@ -14,7 +15,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class InfoAlumnoPage implements OnInit {
 
   constructor(private _activatedRoute: ActivatedRoute, private _service: AlumnosService, private _empService:EmpresasService,
-    private router: Router, private alertController: AlertController, private _translate: TranslateService) { }
+    private router: Router, private alertController: AlertController, private _translate: TranslateService,
+    private afAuth: AngularFireAuth) { }
 
   async ngOnInit() {
     //this.key = this._activatedRoute.snapshot.paramMap.get('key');
@@ -22,12 +24,13 @@ export class InfoAlumnoPage implements OnInit {
 
   async ionViewWillEnter(){
     this.key = this._activatedRoute.snapshot.paramMap.get('key');
-
+    this.email = this.afAuth.auth.currentUser.email;
     await this.descargarDatos();
   }
   
   empresa: Object = {}
   key: string;
+  email: string;
   item: IAlumno = {
     "Apellidos": "",
     "Curso": "",

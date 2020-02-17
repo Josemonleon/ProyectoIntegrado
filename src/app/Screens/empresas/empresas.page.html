@@ -61,7 +61,7 @@
   
   </ion-list>
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="email != 'invitadobekeen@gmail.com'">
     <ion-fab-button (click)="navAddEmpresa()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

@@ -69,7 +69,7 @@
 
 </ion-content>
 
-<ion-footer no-border>
+<ion-footer no-border *ngIf="email != 'invitadobekeen@gmail.com'">
   <ion-toolbar>
     <ion-button routerLink="/edit-alumno/{{key}}" expand="full">{{ 'PAGES.Info-Alumno.BTN_EDITAR' | translate }}<ion-icon slot="end" name="person-add"></ion-icon></ion-button>
     <ion-button (click)="confirmacion()" color="danger" expand="full">{{ 'PAGES.Info-Alumno.BTN_ELIMINAR' | translate }}<ion-icon slot="end" name="trash"></ion-icon></ion-button>
