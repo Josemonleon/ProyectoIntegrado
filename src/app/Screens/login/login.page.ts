@@ -45,8 +45,16 @@ export class LoginPage implements OnInit {
 
   async onRegister(){
     const user = await this._authService.onRegister(this.email, this.password)
-    if(user){
+    
+    if(user == 1){
+      this.emailUsado();
+    }else if(user == 2){ 
+      this.errorPassword();
+    }else if(user){
       this.presentToast();
+      this.changeRegisterState();
+    } else {
+      this.errorDatos();
     }
   }
 
@@ -74,18 +82,25 @@ export class LoginPage implements OnInit {
 
   async errorDatos() {
     let alertTitle;
-
-    this._translate.get('PAGES.Login.ERROR').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
+    this._translate.get('PAGES.Login.ERROR').subscribe( value => { alertTitle = value; })
     
-    const alert = await this.alertController.create({
-      header: 'Info',
-      message: alertTitle
-    });
+    const alert = await this.alertController.create({ header: 'Info', message: alertTitle });
+    await alert.present();
+  }
 
+  async emailUsado() {
+    let alertTitle;
+    this._translate.get('PAGES.Login.USADO').subscribe( value => { alertTitle = value; })
+    
+    const alert = await this.alertController.create({ header: 'Info', message: alertTitle });
+    await alert.present();
+  }
+
+  async errorPassword() {
+    let alertTitle;
+    this._translate.get('PAGES.Login.CONTRASENYA').subscribe( value => { alertTitle = value; })
+    
+    const alert = await this.alertController.create({ header: 'Info', message: alertTitle });
     await alert.present();
   }
 

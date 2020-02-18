@@ -27,7 +27,14 @@ export class AuthService{
             return await this.afAuth.auth.createUserWithEmailAndPassword(email, password);
 
         }catch(error){
-            console.log('Register error', error)
+            console.log(error.message);
+            let emailUsado = 'The email address is already in use by another account.';
+            let contraseña = 'The password must be 6 characters long or more.';
+            if(error.message === emailUsado){
+                return 1;
+            } else if(error.message === contraseña){
+                return 2;
+            } 
         }
     }
 }

@@ -30,8 +30,8 @@
     <ion-label (click)="changeRegisterState()" *ngIf="register == false" >{{ 'PAGES.Login.CREAR_CUENTA' | translate }}</ion-label>
   </div>
 
-  <div class="crearCuenta" >
-    <ion-label (click)="usuarioInvitado()" *ngIf="register == false" >{{ 'PAGES.Login.INVITADO' | translate }}</ion-label>
+  <div class="crearCuenta" *ngIf="register == false" >
+    <ion-label (click)="usuarioInvitado()">{{ 'PAGES.Login.INVITADO' | translate }}</ion-label>
     <ion-icon style="zoom:1.4; margin-left: 6px;" name="information-circle" (click)="infoInvitado()"></ion-icon>
   </div>
 

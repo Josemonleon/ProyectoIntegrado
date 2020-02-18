@@ -14,7 +14,9 @@
             "ERROR": "Error en correo electrónico o contraseña",
             "INVITADO": "Entrar como invitado",
             "INFO_INVITADO": "Como usuario invitado podrás visualizar la información pero no añadir, editar o eliminar la misma.",
-            "INVITADO_TITULO": "Información invitado"
+            "INVITADO_TITULO": "Información invitado",
+            "USADO": "El correo introducido ya está en uso.",
+            "CONTRASENYA": "La contraseña debe tener 6 caracteres o más."
         },
         "Add-Alumno":{
             "TITULO": "NUEVO ALUMNO",
