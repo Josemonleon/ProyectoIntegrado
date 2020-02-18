@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, AlertController } from '@ionic/angular';
 import { AngularFireDatabase } from '@angular/fire/database'
 import { IEmpresa } from '../../interfaces';
 import { EmpresasService } from '../../Services/empresas.services';
@@ -19,7 +19,7 @@ export class AddEmpresaPage implements OnInit {
   nif: string = "";
 
   constructor(private _toastCtrl: ToastController, private _db: AngularFireDatabase, private _service: EmpresasService,
-    private navController: NavController, private _translate: TranslateService) { }
+    private navController: NavController, private _translate: TranslateService, private alertController : AlertController) { }
 
   empresas: IEmpresa[] = [];
 
@@ -38,11 +38,7 @@ export class AddEmpresaPage implements OnInit {
 
     let alertTitle;
 
-    this._translate.get('PAGES.Add-Empresa.EMPESA_AÑADIDA').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
+    this._translate.get('PAGES.Add-Empresa.EMPESA_AÑADIDA').subscribe( value => { alertTitle = value; })
 
     const toast = await this._toastCtrl.create({
       message: alertTitle,
@@ -55,37 +51,49 @@ export class AddEmpresaPage implements OnInit {
   async presentToastDniIncorrecto() {
 
     let alertTitle;
+    this._translate.get('PAGES.Add-Empresa.NIF_INCORRECTO').subscribe(value => { alertTitle = value; })
 
-    this._translate.get('PAGES.Add-Empresa.NIF_INCORRECTO').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
-
-    const toast = await this._toastCtrl.create({
-      message: alertTitle,
-      duration: 4000,
-      position: "bottom"
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
     });
-    toast.present();
+    await alert.present();
   }
 
   async presentToastDniLetraIncorrecta() {
 
     let alertTitle;
+    this._translate.get('PAGES.Add-Empresa.LETRA_INCORRECTA').subscribe(value => { alertTitle = value; })
 
-    this._translate.get('PAGES.Add-Empresa.LETRA_INCORRECTA').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
-
-    const toast = await this._toastCtrl.create({
-      message: alertTitle,
-      duration: 4000,
-      position: "bottom"
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
     });
-    toast.present();
+    await alert.present();
+  }
+
+  async datosIncorrectos() {
+
+    let alertTitle;
+    this._translate.get('PAGES.Add-Empresa.DATOS_INCORRECTOS').subscribe(value => { alertTitle = value; })
+
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
+    });
+    await alert.present();
+  }
+
+  async nifUsado() {
+
+    let alertTitle;
+    this._translate.get('PAGES.Add-Empresa.NIF_USADO').subscribe(value => { alertTitle = value; })
+
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
+    });
+    await alert.present();
   }
 
 
@@ -106,18 +114,10 @@ export class AddEmpresaPage implements OnInit {
         this.presentToast();
         this.volver();
       } else {
-        this._translate.get('PAGES.Add-Empresa.NIF_USADO').subscribe(
-          value => {
-            alert(value)
-          }
-        )
+        this.nifUsado();
       }
     } else {
-      this._translate.get('PAGES.Add-Empresa.DATOS_INCORRECTOS').subscribe(
-        value => {
-          alert(value)
-        }
-      )
+      this.datosIncorrectos();
     }
 
   }

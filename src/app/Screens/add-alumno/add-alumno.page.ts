@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IAlumno, IEmpresa, IEmpresaKey } from 'src/app/interfaces';
 import { AlumnosService } from 'src/app/Services/alumnos.service';
 import { EmpresasService } from 'src/app/Services/empresas.services';
-import { ToastController, NavController } from '@ionic/angular';
+import { ToastController, NavController, AlertController } from '@ionic/angular';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
@@ -15,7 +15,8 @@ import { ActivatedRoute } from '@angular/router';
 export class AddAlumnoPage implements OnInit {
 
   constructor(private _service: AlumnosService, public toastController: ToastController, private _empService: EmpresasService,
-    private navController : NavController, private _translate: TranslateService, private _activatedRoute: ActivatedRoute) { }
+    private navController : NavController, private _translate: TranslateService, private _activatedRoute: ActivatedRoute,
+    private alertController : AlertController) { }
 
   ngOnInit() {
 
@@ -75,29 +76,16 @@ export class AddAlumnoPage implements OnInit {
         this.presentToast();
         this.volver();
       } else {
-        this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe(
-          value => {
-            alert(value)
-          }
-        )
+        this.nifUsado();
       }
     } else {
-      this._translate.get('PAGES.Add-Alumno.DATOS_INCORRECTOS').subscribe(
-        value => {
-          alert(value)
-        }
-      )
+      this.datosIncorrectos();
     }
   }
 
   async presentToast() {
     let alertTitle;
-
-    this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
+    this._translate.get('PAGES.Add-Alumno.ALUMNO_AÑADIDO').subscribe( value => { alertTitle = value; })
 
     const toast = await this.toastController.create({
       message: alertTitle,
@@ -108,38 +96,51 @@ export class AddAlumnoPage implements OnInit {
   }
 
   async presentToastDniLetraIncorrecta() {
-    let alertTitle;
 
-    this._translate.get('PAGES.Add-Alumno.LETRA_INCORRECTA').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
-    
-    const toast = await this.toastController.create({
-      message: alertTitle,
-      duration: 4000,
-      position: "bottom"
+    let alertTitle;
+    this._translate.get('PAGES.Add-Alumno.LETRA_INCORRECTA').subscribe(value => { alertTitle = value; })
+
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
     });
-    toast.present();
+    await alert.present();
   }
 
   async presentToastDniIncorrecto() {
 
     let alertTitle;
-
-    this._translate.get('PAGES.Add-Alumno.DNI_INCORRECTO').subscribe(
-      value => {
-        alertTitle = value;
-      }
-    )
+    this._translate.get('PAGES.Add-Alumno.DNI_INCORRECTO').subscribe( value => { alertTitle = value; })
     
-    const toast = await this.toastController.create({
-      message: alertTitle,
-      duration: 4000,
-      position: "bottom"
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
     });
-    toast.present();
+    await alert.present();
+  }
+
+  async nifUsado() {
+
+    let alertTitle;
+    this._translate.get('PAGES.Add-Alumno.DNI_USADO').subscribe(value => { alertTitle = value; })
+
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
+    });
+    await alert.present();
+  }
+
+  async datosIncorrectos() {
+
+    let alertTitle;
+    this._translate.get('PAGES.Add-Alumno.DATOS_INCORRECTOS').subscribe(value => { alertTitle = value; })
+
+    const alert = await this.alertController.create({
+      header: 'Info',
+      message: alertTitle
+    });
+    await alert.present();
   }
 
   //Comprueba que los campos tienen los formatos correctos.
